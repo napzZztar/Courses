@@ -1,4 +1,4 @@
-Class Student{
+class Student{
 	//all the numbers
 	Float cgpa;
 	int currentSemester;
@@ -36,15 +36,15 @@ Class Student{
 		
 	}
 	
-	vodi showAcademicInfo(){
+	void showAcademicInfo(){
 		System.out.println("Admission Date   : "+this.admissionDate);
 		System.out.println("CGPA             : "+this.cgpa);
 		System.out.println("Current Semester : "+this.currentSemester);
 	}
 	
-	vodi showStudentInfo(){
-		this.showPersonalInfo();
-		this.showAcademicInfo
+	void showStudentInfo(){
+		showPersonalInfo();
+		showAcademicInfo();
 	}
 
 	
@@ -53,9 +53,15 @@ Class Student{
 		Student std1 = new Student();
 		
 		//set the information of the student object using the set methods
-		std1.setAcademicInfo("Ahmed Ashik",  "12-20978-1",  "Uttara,  Dhaka",  "3-03-1994",  "O+ve");
+		std1.setPersonalInfo("Ahmed Ashik",  "12-20978-1",  "Uttara,  Dhaka",  "3-03-1994",  "O+ve");
+		std1.setAcademicInfo("22-03-2012",  3.99F, 6);
 		
 		//Print the information of the student object using show methods
 		std1.showPersonalInfo();
+		System.out.println("========================================");
+		std1.showAcademicInfo();
+		System.out.println("========================================");
+		std1.showStudentInfo();
+		
 	}
 }
