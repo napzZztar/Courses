@@ -49,12 +49,17 @@ class Student{
 
 	
 	public static void main(String args[]){
-		//create an objet and object referene for the class Student
+		//creating objet and object referene
 		Student std1 = new Student();
+		Application app1 = new Application();
+		
+		
 		
 		//set the information of the student object using the set methods
 		std1.setPersonalInfo("Ahmed Ashik",  "12-20978-1",  "Uttara,  Dhaka",  "3-03-1994",  "O+ve");
-		std1.setAcademicInfo("22-03-2012",  3.99F, 6);
+		std1.setAcademicInfo("22-03-2012",  1.00F, 6);
+		
+		app1.setStudentInfo("Ahmed Ashik",  "12-20978-1",  "Uttara,  Dhaka",  "3-03-1994",  "O+ve",  "22-03-2012",  1.00F, 6);
 		
 		//Print the information of the student object using show methods
 		std1.showPersonalInfo();
@@ -63,5 +68,8 @@ class Student{
 		System.out.println("========================================");
 		std1.showStudentInfo();
 		
+		
+		System.out.println("========================================");
+		app1.showStudentInfo();
 	}
 }
