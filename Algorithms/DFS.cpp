@@ -5,12 +5,12 @@ int times;
 int start[7] = {-1};
 int finish[7] = {-1};
 int graph[7][7] = {0};
-char vColor[7] = {'W'};
-char aColor[7][7] = {'W'};
+char vColor[7];
+char aColor[7][7];
 
 void DFS_Visit(int u){
 	vColor[u] = 'G';
-	start[7] = ++times;
+	start[u] = ++times;
 	
 	for(int i=0; i<7; i++){
 		if(graph[u][i] == 1){
@@ -23,16 +23,19 @@ void DFS_Visit(int u){
 	vColor[u] = 'B';
 	finish[u] = ++times;
 	
+	cout<<"==========="<<endl;
 	cout<<"Vertex : "<<u<<endl;
 	cout<<"Start  : "<<start[u]<<endl;
 	cout<<"Finish : "<<finish[u]<<endl;
-	cout<<"========================"<<endl;
 }
 
 void DFS(){
 	times = 0;
+	
+	for(int i=0; i<7; i++) vColor[i] = 'W';
+	
 	for(int i=1; i<7; i++){
-		if(vColor[i]== 'W'){
+		if(vColor[i] == 'W'){
 			DFS_Visit(i);
 		}
 	}
@@ -59,6 +62,7 @@ void inputGraph(){
 }
 
 void showGraph(){
+	cout<<"Adges of the grapth are : "<<endl;
 	for(int i=1; i<7; i++){
 		for(int j=1; j<7; j++){
 			if(graph[i][j]==1){
@@ -73,5 +77,6 @@ int main(){
 	
 	showGraph();
 	DFS();
+	
 	return 0;
 }
