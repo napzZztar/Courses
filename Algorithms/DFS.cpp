@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-int time = 0;
+
+int times;
 int start[7] = {-1};
 int end[7] = {-1};
 int graph[7][7] = {0};
@@ -9,7 +10,7 @@ char aColor[7][7] = {'W'};
 
 void DFS_Visit(int u){
 	vColor[u] = 'G';
-	start[7] = ++time;
+	start[7] = ++times;
 	
 	for(int i=0; i<7; i++){
 		if(graph[u][i] == 1){
@@ -23,8 +24,9 @@ void DFS_Visit(int u){
 }
 
 void DFS(){
+	times = 0;
 	for(int i=1; i<7; i++){
-		if(aColor[i]=='W'){
+		if(vColor[i]== 'W'){
 			DFS_Visit(i);
 		}
 	}
