@@ -3,7 +3,7 @@ using namespace std;
 
 int times;
 int start[7] = {-1};
-int end[7] = {-1};
+int finish[7] = {-1};
 int graph[7][7] = {0};
 char vColor[7] = {'W'};
 char aColor[7][7] = {'W'};
@@ -20,7 +20,13 @@ void DFS_Visit(int u){
 		}
 		
 	}
+	vColor[u] = 'B';
+	finish[u] = ++times;
 	
+	cout<<"Vertex : "<<u<<endl;
+	cout<<"Start  : "<<start[u]<<endl;
+	cout<<"Finish : "<<finish[u]<<endl;
+	cout<<"========================"<<endl;
 }
 
 void DFS(){
@@ -66,6 +72,6 @@ int main(){
 	inputGraph();
 	
 	showGraph();
-	
+	DFS();
 	return 0;
 }
