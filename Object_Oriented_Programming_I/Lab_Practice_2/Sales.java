@@ -38,11 +38,11 @@ class Sales{
 	
 	void showTotalSells(){
 		System.out.println("Total Sells quntity : "+this.totalSells);
-		System.out.println("Total Sells amount  : "+this.totalSalesAmount)
+		System.out.println("Total Sells amount  : "+this.totalSalesAmount);
 	}
 	
 	void showTotalProfits(){
-		this.totalProfit += (this.unitSellPrice - this.unitBuyPrice) * this.salesAmount;
+		totalProfit += (this.unitSellPrice - this.unitBuyPrice) * this.totalSells;
 		System.out.println("Total Profit        : "+this.totalProfit);
 	}
 	
@@ -51,6 +51,15 @@ class Sales{
 	//@main methods
 	
 	public static void main(String args[]){
-		System.out.println("Sales class is working");
+		Sales prod1 = new Sales();
+
+		prod1.addProduct(10);
+		prod1.setUnitBuyPrice(100);
+		prod1.setUintSellPrice(110);
+		prod1.doSells(3);
+
+		prod1.showBills();
+		prod1.showTotalSells();
+		prod1.showTotalProfits();
 	}
 }
