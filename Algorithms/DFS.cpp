@@ -5,6 +5,7 @@ int times;
 int start[7] = {-1};
 int finish[7] = {-1};
 int graph[7][7] = {0};
+int parent[7] = {0};
 char vColor[7];
 char aColor[7][7];
 
@@ -16,6 +17,12 @@ void DFS_Visit(int u){
 		if(graph[u][i] == 1){
 			if(vColor[i] == 'W'){
 				DFS_Visit(i);
+				aColor[u][i] = 'T';
+				parent[i] = u;
+			}else if(start[u] < start[i]){
+				aColor[u][i] = 'F';
+			}else{
+				aColor[u][i] = 'B';
 			}
 		}
 		
@@ -41,7 +48,6 @@ void DFS(){
 	}
 }
 
-
 void inputGraph(){
 	/*
 	for(int i=1; i<7; i++){
@@ -51,6 +57,7 @@ void inputGraph(){
 		}
 	}*/
 	
+	//Just a little short cut.
 	graph[1][2] = 1;
 	graph[1][4] = 1;
 	graph[2][3] = 1;
@@ -66,17 +73,21 @@ void showGraph(){
 	for(int i=1; i<7; i++){
 		for(int j=1; j<7; j++){
 			if(graph[i][j]==1){
-				cout<<i<<" -> "<<j<<endl;
+				cout<<i<<" -> "<<j<<" : "<<aColor[i][j]<<endl;
 			}
 		}
 	}
 }
 
 int main(){
-	inputGraph();
+	for(int i=0; i<7;i++) for(int j=0; j<7; j++) aColor[i][j] = 'N';
 	
+	inputGraph();
 	showGraph();
 	DFS();
+	showGraph();
+	
+	for(int i=1; i<7; i++) cout<<parent[i]<<", ";
 	
 	return 0;
 }
