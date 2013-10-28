@@ -13,7 +13,7 @@ void DFS_Visit(int u){
 	vColor[u] = 'G';
 	start[u] = ++times;
 	
-	for(int i=0; i<7; i++){
+	for(int i=1; i<7; i++){
 		if(graph[u][i] == 1){
 			if(vColor[i] == 'W'){
 				DFS_Visit(i);
@@ -27,6 +27,7 @@ void DFS_Visit(int u){
 		}
 		
 	}
+
 	vColor[u] = 'B';
 	finish[u] = ++times;
 	
@@ -69,12 +70,10 @@ void inputGraph(){
 }
 
 void showGraph(){
-	cout<<"Adges of the grapth are : "<<endl;
+	cout<<"Edges of the grapth are : "<<endl;
 	for(int i=1; i<7; i++){
 		for(int j=1; j<7; j++){
-			if(graph[i][j]==1){
-				cout<<i<<" -> "<<j<<" : "<<aColor[i][j]<<endl;
-			}
+			if(graph[i][j]) cout<<i<<" -> "<<j<<" : "<<aColor[i][j]<<endl;
 		}
 	}
 }
