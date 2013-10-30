@@ -11,7 +11,7 @@ struct edg{
 int main(){
    edg graph[11];
 
-   int sI, eI;
+   int sI, dI;
    int cost = 0;
    int paint = 0;
    int clr[8] = {0};
@@ -61,18 +61,38 @@ int main(){
    graph[10].d = 'F';
    graph[10].v = 7;/*}}}*/
 
+   //done with the crappy input.
 //**********************************
    //@ main for loop
    for(int g; g<11; g++){
-      //@ find starting index
+      //@ find starting index of vertex
       sI = 0;
       while(graph[g].s != vrt[sI++]){}
 
-      //@ find ending index
-      eI = 0;
-      while(graph[g].s != vrt[eI++]){}
+      //@ find ending index of vertex
+      dI = 0;
+      while(graph[g].s != vrt[dI++]){}
+      //******************************
 
+      if(clr[sI] == 0 && clr[dI] == 0){
+      //@ When both vertexes are not in any tree yet
 
+      }else if(clr[sI] != clr[dI]){
+      //@ When color of the vertexes are different
 
+         if(clr[sI] != 0 && clr[dI] != 0){
+         //@ both vertexes are connected to different tree
+
+         }else{
+         //@ one of the vertex is not connected
+            if(clr[sI] == 0){
+            //@ Source vertex not connected
+
+            }else{
+            //@ Destination vertex not connected
+
+            }
+         }
+      }//end of tree varification
    }//end of main for loop
 }//end of main method
