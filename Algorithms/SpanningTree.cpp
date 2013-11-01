@@ -82,7 +82,7 @@ int main(){
    //done with the crappy input.
 //**********************************
    //@ main for loop
-   for(int g=0; g<11; g++){
+   for(int g=0; g<len; g++){
       //@ find starting index of vertex
       sI = 0;
       while(graph[g].s != vrt[sI]){sI++;}
