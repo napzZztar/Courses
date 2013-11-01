@@ -11,6 +11,7 @@ struct edg{
 int main(){
    edg graph[11];
 
+   int temp;
    int sI, dI;
    int cost = 0;
    int paint = 0;
@@ -64,35 +65,58 @@ int main(){
    //done with the crappy input.
 //**********************************
    //@ main for loop
-   for(int g; g<11; g++){
+   for(int g=0; g<11; g++){
       //@ find starting index of vertex
       sI = 0;
-      while(graph[g].s != vrt[sI++]){}
+      while(graph[g].s != vrt[sI]){sI++;}
+      //cout<<vrt[sI];
 
       //@ find ending index of vertex
       dI = 0;
-      while(graph[g].s != vrt[dI++]){}
-      //******************************
+      while(graph[g].d != vrt[dI]){dI++;}
+      //cout<<vrt[dI]<<" :"<<graph[g].v<<endl;
+      //***********************************
 
       if(clr[sI] == 0 && clr[dI] == 0){
       //@ When both vertexes are not in any tree yet
+         clr[sI] = clr[dI] = ++paint;
+         cost += graph[g].v;
+         cout<<graph[g].s<<"-"<<graph[g].d<<endl;
 
       }else if(clr[sI] != clr[dI]){
       //@ When color of the vertexes are different
 
          if(clr[sI] != 0 && clr[dI] != 0){
          //@ both vertexes are connected to different tree
+            //@ Convert both tree into one tree.
+            temp = clr[dI];
+            for(int t=0; t<8; t++){
+               if(temp == clr[t]){
+                  clr[t] = clr[sI];
+               }
+
+            }
+            cost += graph[g].v;
+            cout<<graph[g].s<<"-"<<graph[g].d<<endl;
 
          }else{
          //@ one of the vertex is not connected
             if(clr[sI] == 0){
             //@ Source vertex not connected
+               cost += graph[g].v;
+               clr[sI] = clr[dI];
+               cout<<graph[g].s<<"-"<<graph[g].d<<endl;
 
             }else{
             //@ Destination vertex not connected
+               cost += graph[g].v;
+               clr[dI] = clr[sI];
+               cout<<graph[g].s<<"-"<<graph[g].d<<endl;
 
             }
          }
       }//end of tree varification
    }//end of main for loop
+   cout<<"The cost to travle the MSP is : "<<cost<<endl;
+
 }//end of main method
