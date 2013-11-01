@@ -7,18 +7,35 @@ struct edg{
    int v;
 };
 
+//@ A method that will arrange the vertexs
+void vArrange(edg *ar, int ln){
+   for(int i=0; i<ln; i++){
+
+   }
+}
 
 int main(){
-   edg graph[11];
+   int len = 1;
+   cin>>len;
+   edg graph[len];
 
    int temp;
    int sI, dI;
    int cost = 0;
    int paint = 0;
    int clr[8] = {0};
+   //char *vrt;
    char vrt[8] = {"ABCDEFG"};
 
-   graph[0].s = 'A';/*{{{*/
+   cout<<"Enter the vertexes and values followed by Enter: "<<endl;
+   for(int i=0; i<len; i++){
+      cin>>graph[i].s>>graph[i].d>>graph[i].v;
+   }
+
+/*{{{*/
+
+/*
+   graph[0].s = 'A';
    graph[0].d = 'C';
    graph[0].v = 1;
 
@@ -60,8 +77,8 @@ int main(){
 
    graph[10].s = 'E';
    graph[10].d = 'F';
-   graph[10].v = 7;/*}}}*/
-
+   graph[10].v = 7;*/
+/*}}}*/
    //done with the crappy input.
 //**********************************
    //@ main for loop
