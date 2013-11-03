@@ -1,5 +1,6 @@
 class Employee{
-   private int empId;
+   //@ Attributes
+   private int empId;//{{{
    private String name;
    private String dept;
    private String designation;
@@ -13,9 +14,10 @@ class Employee{
    private double totalSalesAmount;
    private double medicalAllowance;
    private double houseRent;
+//}}}
 
    //@ constructors.
-   public Employee(String name, int empId, String dept, String designation, double totalSalesAmount){
+   public Employee(String name, int empId, String dept, String designation, double totalSalesAmount){//{{{
      this.name = name;
      this.empId = empId;
      this.dept = dept;
@@ -26,7 +28,7 @@ class Employee{
 
      }
 
-   }
+   }//}}}
 
    //@get methods
    void setname(String name){//{{{
