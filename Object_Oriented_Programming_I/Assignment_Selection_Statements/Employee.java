@@ -29,7 +29,7 @@ class Employee{
    }
 
    //@get methods
-   void setname(String name){
+   void setname(String name){//{{{
       this.name = name;
    }
    void setdept(String dept){
@@ -69,8 +69,9 @@ class Employee{
    }
 
 
+   //}}}
 
-
+   //@ Show methods
 //{{{
    public void showEmpInfo(){
       System.out.println("------------------------------");
