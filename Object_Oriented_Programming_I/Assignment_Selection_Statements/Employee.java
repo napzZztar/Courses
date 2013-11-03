@@ -1,4 +1,5 @@
 class Employee{
+
    //@ Attributes
    private int empId;//{{{
    private String name;
@@ -14,6 +15,8 @@ class Employee{
    private double totalSalesAmount;
    private double medicalAllowance;
    private double houseRent;
+   private double commissionPer;
+   private double houseRentPer;
 //}}}
 
    //@ Constructors.
@@ -24,9 +27,30 @@ class Employee{
      this.designation = designation;
      this.totalSalesAmount = totalSalesAmount;
 
-     if(this.dept=="Sales"){
+     if(this.designation =="Executive"){
+         this.basicSalary = 10000;
+         this.houseRentPer = 50;
+         this.medicalAllowance = 500;
+         if(dept == "Sales")
+            this.commissionPer = 20;
+         else
+            System.out.println("Depertment Not Found");
 
+     }else if(this.designation == "Manager"){
+         this.basicSalary = 20000;
+         this.houseRentPer = 60;
+         this.medicalAllowance = 1000;
+         if(dept == "Sales")
+            this.commissionPer = 30;
+         else
+            System.out.println("Depertment Not Found");
+     }else{
+        System.out.println("Designation Not Found");
      }
+
+     this.commission = (this.commissionPer / 100) * this.totalSalesAmount;
+     this.houseRent = (this.houseRentPer / 100) * this.basicSalary;
+     this.totalSalary = this.basicSalary + this.houseRent + this.medicalAllowance + this.totalSalesAmount;
 
    }//}}}
 
@@ -52,24 +76,6 @@ class Employee{
    void setEmail(String email){
       this.email = email;
    }
-   void setBasicSalary(double basicSalary){
-      this.basicSalary = basicSalary;
-   }
-   void setCommission(double commission){this.commission = commission;
-   }
-   void setTotalSalary(double totalSalary){
-      this.totalSalary = totalSalary;
-   }
-   void setTotalSalesAmount(double totalSalesAmount){
-      this.totalSalesAmount = totalSalesAmount;
-   }
-   void setMedicalAllowance(double medicalAllowance){
-      this.medicalAllowance = medicalAllowance;
-   }
-   void setHouseRent(double houseRent){
-      this.houseRent = houseRent;
-   }
-
 
    //}}}
 
@@ -81,7 +87,7 @@ class Employee{
       return this.dept;
    }
    String getDesignation(){
-      return this.setDesignation;
+      return this.designation;
    }
    String getJoinDate(){
       return this.joinDate;
@@ -117,29 +123,40 @@ class Employee{
 
    //@ Show methods
 //{{{
-   public void showEmpInfo(){
+   public void showPaySlip(){
       System.out.println("------------------------------");
-      System.out.println("Employee Id   : "+this.name);
-      System.out.println("Employee Name : "+this.empId);
-      System.out.println("Departments   : "+this.dept);
-      System.out.println("Designation   : "+this.designation);
-      System.out.println(" : "+this.joinDate);
-      System.out.println(" : "+this.dateOfBirth);
-      System.out.println(" : "+this.contactNo);
-      System.out.println(" : "+this.email);
-      System.out.println("Basic         : "+this.basicSalary);
-      System.out.println("House Rent    : "+this.houseRent);
-      System.out.println("Medical       : "+this.medicalAllowance);
-      System.out.println("              : "+this.commission);
-      System.out.println("Commission    : "+this.totalSalesAmount);
+      System.out.println("---------Pay Slip-------------");
       System.out.println("------------------------------");
-      System.out.println("Total Salary  : "+this.totalSalary);
+      System.out.println("Employee Id       : "+this.empId);
+      System.out.println("Employee Name     : "+this.name);
+      System.out.println("Departments       : "+this.dept);
+      System.out.println("Designation       : "+this.designation);
+      System.out.println("Joining Date      : "+this.joinDate);
+      System.out.println("Date of Birth     : "+this.dateOfBirth);
+      System.out.println("Contact No        : "+this.contactNo);
+      System.out.println("E-mail            : "+this.email);
+      System.out.println("Basic Salary      : "+this.basicSalary+" $");
+      System.out.println("House Rent        : "+this.houseRent+" $");
+      System.out.println("Medical Allowance : "+this.medicalAllowance+" $");
+      System.out.println("Commission        : "+this.commission+" $");
+      System.out.println("Total Sale Amount : "+this.totalSalesAmount+" $");
+      System.out.println("------------------------------");
+      System.out.println("Total Salary      : "+this.totalSalary+" $");
+      System.out.println("------------------------------");
+      System.out.println("-------End of Pay Slip--------");
+      System.out.println("------------------------------");
+
 
    }//}}}
 
+   //@ Main Method
    public static void main(String args[]){
-      Employee emp1 = new Employee("Ashik Ahmed", 1220, "Sales", "Manager", 1200);
-      emp1.showEmpInfo();
+      Employee emp1 = new Employee("Bill Gates", 1220, "Sales", "Manager", 1200);
+      emp1.setDateOfBirth("October-28-1955");
+      emp1.setJoinDate("January-01-2013");
+      emp1.setEmail("billg@microsoft.com");
+      emp1.setContactNo("N/A");
+      emp1.showPaySlip();
 
    }
 }
