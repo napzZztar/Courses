@@ -16,7 +16,7 @@ class Employee{
    private double houseRent;
 //}}}
 
-   //@ constructors.
+   //@ Constructors.
    public Employee(String name, int empId, String dept, String designation, double totalSalesAmount){//{{{
      this.name = name;
      this.empId = empId;
@@ -30,48 +30,90 @@ class Employee{
 
    }//}}}
 
-   //@get methods
-   void setname(String name){//{{{
+   //@ Set methods
+   void setName(String name){//{{{
       this.name = name;
    }
-   void setdept(String dept){
+   void setDept(String dept){
       this.dept = dept;
    }
-   void setdesignation(String designation){
+   void setDesignation(String designation){
       this.designation = designation;
    }
-   void setjoinDate(String joinDate){
+   void setJoinDate(String joinDate){
       this.joinDate = joinDate;
    }
-   void setdateOfBirth(String dateOfBirth){
+   void setDateOfBirth(String dateOfBirth){
       this.dateOfBirth = dateOfBirth;
    }
-   void setcontactNo(String contactNo){
+   void setContactNo(String contactNo){
       this.contactNo = contactNo;
    }
-   void setemail(String email){
+   void setEmail(String email){
       this.email = email;
    }
-   void setbasicSalary(double basicSalary){
+   void setBasicSalary(double basicSalary){
       this.basicSalary = basicSalary;
    }
-   void setcommission(double commission){this.commission = commission;
+   void setCommission(double commission){this.commission = commission;
    }
-   void settotalSalary(double totalSalary){
+   void setTotalSalary(double totalSalary){
       this.totalSalary = totalSalary;
    }
-   void settotalSalesAmount(double totalSalesAmount){
+   void setTotalSalesAmount(double totalSalesAmount){
       this.totalSalesAmount = totalSalesAmount;
    }
-   void setmedicalAllowance(double medicalAllowance){
+   void setMedicalAllowance(double medicalAllowance){
       this.medicalAllowance = medicalAllowance;
    }
-   void sethouseRent(double houseRent){
+   void setHouseRent(double houseRent){
       this.houseRent = houseRent;
    }
 
 
    //}}}
+
+   //@ Get Methods
+   String getName(){ //{{{
+      return this.name;
+   }
+   String getDept(){
+      return this.dept;
+   }
+   String getDesignation(){
+      return this.setDesignation;
+   }
+   String getJoinDate(){
+      return this.joinDate;
+   }
+   String getDateOfBir(){
+      return this.dateOfBirth;
+   }
+   String getContactNo(){
+      return this.contactNo;
+   }
+   String getEmail(){
+      return this.email;
+   }
+   double getBasicSala(){
+      return this.basicSalary;
+   }
+   double getCommissio(){
+      return this.commission;
+   }
+   double getTotalSala(){
+      return this.totalSalary;
+   }
+   double getTotalSaleAmount(){
+      return this.totalSalesAmount;
+   }
+   double getMedicalAllowance(){
+      return this.medicalAllowance;
+   }
+   double getHouseRentHouseRent(){
+      return this.houseRent;
+   }
+//}}}
 
    //@ Show methods
 //{{{
