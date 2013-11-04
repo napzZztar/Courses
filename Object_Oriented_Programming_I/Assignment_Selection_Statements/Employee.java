@@ -52,7 +52,14 @@ class Employee{
      this.houseRent = (this.houseRentPer / 100) * this.basicSalary;
      this.totalSalary = this.basicSalary + this.houseRent + this.medicalAllowance + this.totalSalesAmount;
 
-   }//}}}
+   }
+
+   public Employee(String name, int empId, String dept, String designation){
+      this(name, empId, dept, designation, 0.0);
+
+   }
+
+//}}}
 
    //@ Set methods
    void setEmpId(int empId){//{{{
@@ -152,6 +159,7 @@ class Employee{
       System.out.println("------------------------------");
       System.out.println("-------End of Pay Slip--------");
       System.out.println("------------------------------");
+      System.out.println();
 
 
    }//}}}
@@ -159,11 +167,15 @@ class Employee{
    //@ Main Method
    public static void main(String args[]){
       Employee emp1 = new Employee("Bill Gates", 1220, "Sales", "Manager", 1200);
+      Employee emp2 = new Employee("Mark Zuckerberg", 1229, "Other", "Executive");
+
       emp1.setDateOfBirth("October-28-1955");
       emp1.setJoinDate("January-01-2013");
       emp1.setEmail("billg@microsoft.com");
       emp1.setContactNo("N/A");
+
       emp1.showPaySlip();
+      emp2.showPaySlip();
 
    }
 }
