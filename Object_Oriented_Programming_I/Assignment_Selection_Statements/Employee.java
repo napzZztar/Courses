@@ -55,7 +55,10 @@ class Employee{
    }//}}}
 
    //@ Set methods
-   void setName(String name){//{{{
+   void setEmpId(int empId){//{{{
+      this.empId = empId;
+   }
+   void setName(String name){
       this.name = name;
    }
    void setDept(String dept){
@@ -80,7 +83,11 @@ class Employee{
    //}}}
 
    //@ Get Methods
-   String getName(){ //{{{
+   int getImpId(){//{{{
+
+      return this.empId;
+   }
+   String getName(){
       return this.name;
    }
    String getDept(){
