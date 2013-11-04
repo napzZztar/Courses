@@ -174,6 +174,11 @@ class Employee{
       emp1.setEmail("billg@microsoft.com");
       emp1.setContactNo("N/A");
 
+      emp2.setDateOfBirth("May-14-1984");
+      emp2.setJoinDate("January-01-2012");
+      emp2.setEmail("N/A");
+      emp2.setContactNo("N/A");
+
       emp1.showPaySlip();
       emp2.showPaySlip();
 
