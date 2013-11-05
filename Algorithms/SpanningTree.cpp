@@ -10,7 +10,6 @@ struct edg{
 //@ A method that will arrange the vertexs
 void vArrange(edg *ar, int ln){
    for(int i=0; i<ln; i++){
-
    }
 }
 
@@ -18,7 +17,6 @@ int main(){
    int len = 1;
    cin>>len;
    edg graph[len];
-
    int temp;
    int sI, dI;
    int cost = 0;
@@ -26,7 +24,6 @@ int main(){
    int clr[8] = {0};
    //char *vrt;
    char vrt[8] = {"ABCDEFG"};
-
    cout<<"Enter the vertexes and values followed by Enter: "<<endl;
    for(int i=0; i<len; i++){
       cin>>graph[i].s>>graph[i].d>>graph[i].v;
@@ -87,22 +84,18 @@ int main(){
       sI = 0;
       while(graph[g].s != vrt[sI]){sI++;}
       //cout<<vrt[sI];
-
       //@ find ending index of vertex
       dI = 0;
       while(graph[g].d != vrt[dI]){dI++;}
       //cout<<vrt[dI]<<" :"<<graph[g].v<<endl;
       //***********************************
-
       if(clr[sI] == 0 && clr[dI] == 0){
       //@ When both vertexes are not in any tree yet
          clr[sI] = clr[dI] = ++paint;
          cost += graph[g].v;
          cout<<graph[g].s<<"-"<<graph[g].d<<endl;
-
       }else if(clr[sI] != clr[dI]){
       //@ When color of the vertexes are different
-
          if(clr[sI] != 0 && clr[dI] != 0){
          //@ both vertexes are connected to different tree
             //@ Convert both tree into one tree.
@@ -111,11 +104,9 @@ int main(){
                if(temp == clr[t]){
                   clr[t] = clr[sI];
                }
-
             }
             cost += graph[g].v;
             cout<<graph[g].s<<"-"<<graph[g].d<<endl;
-
          }else{
          //@ one of the vertex is not connected
             if(clr[sI] == 0){
@@ -123,13 +114,11 @@ int main(){
                cost += graph[g].v;
                clr[sI] = clr[dI];
                cout<<graph[g].s<<"-"<<graph[g].d<<endl;
-
             }else{
             //@ Destination vertex not connected
                cost += graph[g].v;
                clr[dI] = clr[sI];
                cout<<graph[g].s<<"-"<<graph[g].d<<endl;
-
             }
          }
       }//end of tree varification
