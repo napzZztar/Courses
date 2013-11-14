@@ -1,51 +1,50 @@
 #include <iostream>
 #include <string>
+#include <list>
 
 using namespace std;
 
-struct vert{
-   char s;
-   char d;
-   char v;
+struct edg{
+   char src;
+   char dst;
+   char vlu;
 };
 
-void inpGraph(vert *g, int l, char *v){
-   int flag;
-   int counter = 0;
-   for(int i=0; i<l; i++){
-      cin>>(g+i)->s;
-      cin>>(g+i)->d;
-      cin>>(g+i)->v;
-      flag = 0;
-      for(int j=0; j<counter; j++){
-         if(*(v+j)==(g+i)->s){
-            flag = 1;
-            counter++;
-            cout<<"True"<<endl;
-         }
-      }
-      if(!flag)
-         *(v+counter) = (g+i)->s;
+struct vert{
+   char vlu;
+   char clr;
+};
 
-      flag = 0;
-      for(int j=0; j<counter; j++){
-         if(*(v+j)==(g+i)->d){
-            flag = 1;
-            counter++;
-         }
-      }
+list<edg> graph;
+list<vert> vertex;
 
-      if(!flag)
-         *(v+counter) = (g+i)->d;
-      cout<<*(v+counter);
+void inpGraph(int len){
+   edg te;
+   vert tv;
+   for(int i=0; i<len; i++){
+      cin>>te.src;
+      cin>>te.dst;
+      cin>>te.vlu;
+      graph.push_back(te);
+      
+      tv.vlu = te.src;
+      tv.clr = 'w';
+      vertex.push_back(tv);
+      
+      tv.vlu = te.dst;
+      tv.clr = 'w';
+      vertex.push_back(tv);
+      
    }
+
 }
 
 int main(){
-   char v[20] = " ";
-   vert graph[5];
-   
-   inpGraph(graph, 2, v);
-   cout<<v[2];
+   inpGraph(3);
+   list<vert>::iterator i;
+
+   for(i = vertex.begin(); i != vertex.end(); i++){
+      cout<<i->vlu;
+   }
    return 0;
 }

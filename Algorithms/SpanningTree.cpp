@@ -29,8 +29,6 @@ int main(){
       cin>>graph[i].s>>graph[i].d>>graph[i].v;
    }
 
-/*{{{*/
-
 /*
    graph[0].s = 'A';
    graph[0].d = 'C';
@@ -75,7 +73,7 @@ int main(){
    graph[10].s = 'E';
    graph[10].d = 'F';
    graph[10].v = 7;*/
-/*}}}*/
+
    //done with the crappy input.
 //**********************************
    //@ main for loop
