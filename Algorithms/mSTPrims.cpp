@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <queue>
 
 using namespace std;
 
@@ -13,11 +14,14 @@ struct edg{
 struct vert{
    char vlu;
    char clr;
+   int par;
+   int prior;
 };
 
 list<edg> graph;
 list<vert> vertex;
-list<edg> stk;
+priority_queue<edg> que;
+list<edg> tree;
 
 //@ Just a method to input the graph and findout the vertx
 void inpGraph(int len){
@@ -46,33 +50,15 @@ void inpGraph(int len){
    for(x= vTemp.begin(); x != vTemp.end(); x++){
       tv.vlu = *x;
       tv.clr = 'w';
+      tv.prior = 99999;
+      tv.par = 0;
       vertex.push_back(tv);
    }
 }
 
-void prims(vert temp){
-   //@ for all unvisited vertex started form this vertex
-   vert dV;
-   list<edg>::iterator i;
-   for(*i=graph.front(); i!=graph.end(); i++){
-      if(i->src == temp.vlu){
-         list<vert>::iterator j;
-         *j = vertex.front();
-         for( ;j->vlu != i->dst ; j++){}
-         dV = *j;
-      }
-      
-      //@ First visit to this node
-      if(dV.clr == 'w'){
-         stk.push_back(*i);
-      //@ node is inside the stack
-      }else if(dV.clr == 'g'){
-         //@ looking for the node inside stack
-         list<edg>::iterator j;
-         *j=stk.front();
-         for( ;j->dst == dV.vlu; j++){}
-         
-      }
+void prims(edg temp){
+   que.push(temp);
+   while(!que.empty()){
    }
 }
 
