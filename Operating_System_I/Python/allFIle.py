@@ -3,7 +3,7 @@ from sys import argv
 import glob
 
 script, path, outFile = argv
-path = "%s*.cpp" %path
+path = "%s*" %path
 filePth = glob.glob(path)
 print "Entered path : "+path
 
@@ -27,6 +27,6 @@ for file in filePth:
          lines = sum(1 for line in fin)
       str = "%s     -   %d\n" %(file, lines)
       outFile.write(str)
-print "All DONE!!"
+print "\nAll DONE!!"
 
 outFile.close()
