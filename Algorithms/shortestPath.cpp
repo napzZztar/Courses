@@ -6,23 +6,21 @@ using namespace std;
 struct edge{
    char s;
    char d;
-   char v;
+   char w;
 };
 
 int nVert;
+int nEdge;
 edge graph[20];
 char vert[20];
 list<char> temp;
 
-void inGraph(){
-   cout<<"Enter the number of vertex :";
-   cin>>nVert;
-   cout<<"Enter the vertices(<src> <dst> <wt>)"<<endl;
+void inGraph(){ cout<<"Enter the number of Edges:"; cin>>nEdge; cout<<"Enter the vertices(<src> <dst> <wt>)"<<endl;
 
-   for(int i=0; i<nVert; i++){
+   for(int i=0; i<nEdge; i++){
       cin>>graph[i].s;
       cin>>graph[i].d;
-      cin>>graph[i].v;
+      cin>>graph[i].w;
       temp.push_back(graph[i].s);
       temp.push_back(graph[i].d);
    }
@@ -30,10 +28,14 @@ void inGraph(){
    temp.unique();
 
    list<char>::iterator i;
+   nVert = 0;
 
-   for()
+   for(i = temp.begin(); i!=temp.end(); i++){
+       vert[nVert] = *i;
+       nVert++;
+   }
    
-
+/*
    graph[0].s = 'A';
    graph[0].d = 'C';
    graph[0].v = 1;
@@ -77,11 +79,27 @@ void inGraph(){
    graph[10].s = 'E';
    graph[10].d = 'F';
    graph[10].v = 7;
+   */
+}
+
+void shoGraph(){
+   cout<<"Source - Destination - Weight"<<endl;
+
+   for(int i= 0 ; i<nEdge; i++){
+      cout<<graph[i].s<<"  -  "<<graph[i].d<<"  -  "<<graph[i].w<<endl;
+   }
+
+   cout<<endl<<endl<<"Vertices : ";
+   for(int i=0; i<nVert; i++){
+      cout<<vert[i];
+   }
+   cout<<endl<<endl;
 }
 
 
 int main(){
-   
+   inGraph();
+   shoGraph();
 
    return 0;
 }

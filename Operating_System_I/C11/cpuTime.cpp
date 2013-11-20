@@ -1,15 +1,37 @@
 #include <iostream>
 #include <algorithm>
+#include <queue>
 using namespace std;
 
 struct process{
-   int prcID;
+   int prcId;
    int bstTim;
    int arvTim;
    int prir;
 };
+
+struct pFcfs{
+   int procId;
+   int arvTim;
+   int bstTim;
+};
+
+struct pSjf{
+   int prcId;
+   int bstTim;
+   int arvTim;
+};
+
 bool operator<(const process& a, const process& b){
-      return a.arvTim < b.arvTim;
+   return a.arvTim < b.arvTim;
+}
+
+bool operator<(const pFcfs& a, const pFcfs& b){
+   return a.arvTim < b.arvTim;
+}
+
+bool operator<(const pSjf& a, const pSjf& b){
+   return a.bstTim > b.bstTim;
 }
 
 process prc[5];
@@ -18,24 +40,55 @@ void FCFS(){
    int wait = 0;
    int turn = 0;
    int buffer = 0;
+   pFcfs prcF[5];
 
-   sort(prc, prc + 5);
+   for(int i=0; i<5; i++){
+      prcF[i].arvTim = prc[i].arvTim;
+      prcF[i].bstTim = prc[i].bstTim;
+      prcF[i].procId = prc[i].prcId;
+   }
+
+   sort(prcF, prcF + 5);
    
    for(int i=0; i<5; i++){
-      wait += buffer - prc[i].arvTim;
-      buffer += prc[i].bstTim;
-      turn += buffer - prc[i].arvTim;
+      wait += buffer - prcF[i].arvTim;
+      buffer += prcF[i].bstTim;
+      turn += buffer - prcF[i].arvTim;
    }
    cout<<"Wait time       = "<<wait/5<<endl;
    cout<<"Turnaround time = "<<turn/5<<endl;
 }
 
+void sJF(){
+   int wait = 0;
+   int buffer = 0;
+   priority_queue<pSjf> pq;
+   pSjf prcS[5];
+   pSjf active;
+
+   for(int i=0; i<5; i++){
+      prcS[i].arvTim = prc[i].arvTim;
+      prcS[i].bstTim = prc[i].bstTim;
+      prcS[i].prcId = prc[i].prcId;
+   }
+
+   for(int i=0; i<5; i++){
+      do{
+         pq.push(prcS[i]);
+      }while(prcS[i].arvTim == prcS[++i].arvTim);
+
+      if(!pq.empty()){
+
+      }
+   }
+}
+
 int main(){
-   prc[0].prcID = 1;
-   prc[1].prcID = 2;
-   prc[2].prcID = 3;
-   prc[3].prcID = 4;
-   prc[4].prcID = 5;
+   prc[0].prcId = 1;
+   prc[1].prcId = 2;
+   prc[2].prcId = 3;
+   prc[3].prcId = 4;
+   prc[4].prcId = 5;
 
    prc[0].bstTim = 10;
    prc[1].bstTim = 8;
@@ -55,6 +108,13 @@ int main(){
    prc[2].prir = 1;
    prc[3].prir = 5;
    prc[4].prir = 7;
+
+
+   sort(prc, prc+5);
+
    FCFS();
+
+   cout<<endl<<"Sjf :"<<endl;
+   sJF();
 
 }
