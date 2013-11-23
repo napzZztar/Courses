@@ -62,31 +62,47 @@ void FCFS(){
 
 void sJF(){
    int wait = 0;
-   int begin = 0;
-   int end = 0;
+   int turn = 0;
+   int next = 1;
    priority_queue<pSjf> pq;
    pSjf prcS[5];
    pSjf active;
-
    for(int i=0; i<5; i++){
       prcS[i].arvTim = prc[i].arvTim;
       prcS[i].bstTim = prc[i].bstTim;
       prcS[i].prcId = prc[i].prcId;
    }
 
-   active = prcS[0];
-   begin = prcS[0].arvTim;
+   pq.push(prcS[0]);
+   active.bstTim = 0;
+   active.arvTim = 1;
 
-   for(int i=1; i<5; ){
-      do{
-         if(prcS[i].bstTim<active.bstTim){
-            pq.push(active);
-            active = prcS[i];
+   for(int i=1; ; i++){
+      if(active.bstTim==0){
+         turn += i-active.arvTim;
+         if(pq.empty()){
+            break;
          }
-      }while(prcS[i].arvTim == prcS[++i].arvTim);
-      
+         active = pq.top();
+         pq.pop();
       }
+      
+      if(i==prcS[next].arvTim){
+         do{
+            if(active.bstTim<prcS[next].bstTim){
+               pq.push(prcS[next]);
+            }else{
+               pq.push(active);
+               active = prcS[next];
+            }
+         }while(prcS[++next].arvTim == i);
+      }
+      wait += pq.size();
+      active.bstTim--;
    }
+
+   cout<<"Avg wait time = "<<wait/5<<endl;
+   cout<<"Avg returnaround time = "<<turn/5<<endl;
 }
 
 int main(){
