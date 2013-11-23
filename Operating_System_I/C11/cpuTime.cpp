@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <queue>
+#include <limits>
 using namespace std;
 
 struct process{
@@ -61,7 +62,8 @@ void FCFS(){
 
 void sJF(){
    int wait = 0;
-   int buffer = 0;
+   int begin = 0;
+   int end = 0;
    priority_queue<pSjf> pq;
    pSjf prcS[5];
    pSjf active;
@@ -72,13 +74,17 @@ void sJF(){
       prcS[i].prcId = prc[i].prcId;
    }
 
-   for(int i=0; i<5; i++){
+   active = prcS[0];
+   begin = prcS[0].arvTim;
+
+   for(int i=1; i<5; ){
       do{
-         pq.push(prcS[i]);
+         if(prcS[i].bstTim<active.bstTim){
+            pq.push(active);
+            active = prcS[i];
+         }
       }while(prcS[i].arvTim == prcS[++i].arvTim);
-
-      if(!pq.empty()){
-
+      
       }
    }
 }
