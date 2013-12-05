@@ -35,7 +35,7 @@ bool operator<(const process& a, const process& b){
 }
 
 bool operator<(const pFcfs& a, const pFcfs& b){
-   return a.arvTim < b.arvTim;
+   return a.arvTim > b.arvTim;
 }
 
 bool operator<(const pSjf& a, const pSjf& b){
@@ -80,23 +80,30 @@ void FCFS(){
    int wait = 0;
    int turn = 0;
    int buffer = 0;
-   pFcfs prcF[5];
+   pFcfs prcF;
+   priority_queue<pFcfs> pq;
 
    for(int i=0; i<5; i++){
-      prcF[i].arvTim = prc[i].arvTim;
-      prcF[i].bstTim = prc[i].bstTim;
-      prcF[i].procId = prc[i].prcId;
+      prcF.arvTim = prc[i].arvTim;
+      prcF.bstTim = prc[i].bstTim;
+      prcF.procId = prc[i].prcId;
+      pq.push(prcF);
    }
-
-   sort(prcF, prcF + 5);
    
-   for(int i=0; i<5; i++){
-      wait += buffer - prcF[i].arvTim;
-      buffer += prcF[i].bstTim;
-      turn += buffer - prcF[i].arvTim;
+   prcF = pq.top();
+
+   for(int i=1;buffer>=0; i++){
+      while(prcF.arvTim == i && !pq.empty()){
+         if(buffer)wait += (i + buffer) - prcF.arvTim;
+         buffer += prcF.bstTim;
+         turn += (i + buffer) - prcF.arvTim;
+         pq.pop();
+         prcF = pq.top();
+      }
+      buffer--;
    }
-   cout<<"Wait time       = "<<wait/5<<endl;
-   cout<<"Turnaround time = "<<turn/5<<endl;
+   cout<<"Wait time       = "<<wait/5.0<<endl;
+   cout<<"Turnaround time = "<<turn/5.0<<endl;
 }
 
 void sJF(){
