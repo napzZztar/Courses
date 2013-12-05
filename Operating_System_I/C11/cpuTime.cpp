@@ -9,7 +9,7 @@ struct process{
    int bstTim;
    int arvTim;
    int prir;
-};
+}prc[5];
 
 struct pFcfs{
    int procId;
@@ -21,6 +21,13 @@ struct pSjf{
    int prcId;
    int bstTim;
    int arvTim;
+};
+
+struct pPqu{
+   int prcId;
+   int bstTim;
+   int arvTim;
+   int prior;
 };
 
 bool operator<(const process& a, const process& b){
@@ -35,7 +42,39 @@ bool operator<(const pSjf& a, const pSjf& b){
    return a.bstTim > b.bstTim;
 }
 
-process prc[5];
+bool operator<(const pPqu& a, const pPqu& b){
+   return a.prior> b.prior;
+}
+
+
+void input(){
+   prc[0].prcId = 1;
+   prc[1].prcId = 2;
+   prc[2].prcId = 3;
+   prc[3].prcId = 4;
+   prc[4].prcId = 5;
+
+   prc[0].bstTim = 10;
+   prc[1].bstTim = 8;
+   prc[2].bstTim = 5;
+   prc[3].bstTim = 4;
+   prc[4].bstTim = 2;
+
+   prc[0].arvTim = 1;
+   prc[1].arvTim = 2;
+   prc[2].arvTim = 3;
+   prc[3].arvTim = 4;
+   prc[4].arvTim = 1;
+
+   
+   prc[0].prir = 3;
+   prc[1].prir = 2;
+   prc[2].prir = 1;
+   prc[3].prir = 5;
+   prc[4].prir = 7;
+
+   sort(prc, prc+5);
+}
 
 void FCFS(){
    int wait = 0;
@@ -105,38 +144,62 @@ void sJF(){
    cout<<"Avg returnaround time = "<<turn/5<<endl;
 }
 
+void pQue(){
+   int wait = 0;
+   int turn = 0;
+   int next = 1;
+   priority_queue<pPqu> pq;
+   pPqu prcP[5];
+   pPqu active;
+   for(int i=0; i<5; i++){
+      prcP[i].arvTim = prc[i].arvTim;
+      prcP[i].bstTim = prc[i].bstTim;
+      prcP[i].prcId = prc[i].prcId;
+      prcP[i].prior = prc[i].prir;
+   }
+
+   pq.push(prcP[0]);
+   active.bstTim = 0;
+   active.prior = 9999999;
+   active.arvTim = 1;
+
+   for(int i=1; ; i++){
+      if(active.bstTim==0){
+         turn += i-active.arvTim;
+         if(pq.empty()){
+            break;
+         }
+         active = pq.top();
+         pq.pop();
+      }
+      
+      if(i==prcP[next].arvTim){
+         do{
+            if(active.prior<prcP[next].prior){
+               pq.push(prcP[next]);
+            }else{
+               pq.push(active);
+               active = prcP[next];
+            }
+         }while(prcP[++next].arvTim == i);
+      }
+      wait += pq.size();
+      active.bstTim--;
+   }
+
+   cout<<"Avg wait time = "<<wait/5<<endl;
+   cout<<"Avg returnaround time = "<<turn/5<<endl;
+}
+
 int main(){
-   prc[0].prcId = 1;
-   prc[1].prcId = 2;
-   prc[2].prcId = 3;
-   prc[3].prcId = 4;
-   prc[4].prcId = 5;
+   input();
 
-   prc[0].bstTim = 10;
-   prc[1].bstTim = 8;
-   prc[2].bstTim = 5;
-   prc[3].bstTim = 4;
-   prc[4].bstTim = 2;
-
-   prc[0].arvTim = 1;
-   prc[1].arvTim = 2;
-   prc[2].arvTim = 3;
-   prc[3].arvTim = 4;
-   prc[4].arvTim = 1;
-
-   
-   prc[0].prir = 3;
-   prc[1].prir = 2;
-   prc[2].prir = 1;
-   prc[3].prir = 5;
-   prc[4].prir = 7;
-
-
-   sort(prc, prc+5);
-
+   cout<<endl<<"FCFS  : "<<endl;
    FCFS();
 
-   cout<<endl<<"Sjf :"<<endl;
+   cout<<endl<<"Sjf   : "<<endl;
    sJF();
-
+   
+   cout<<endl<<"Queue : "<<endl;
+   pQue();
 }
