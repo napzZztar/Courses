@@ -22,7 +22,9 @@ int pred[20] = {-1};
 list<char> temp;
 
 void inGraph(){ 
-/*   cout<<"Enter the number of Edges:"; cin>>nEdge; cout<<"Enter the vertices(<src> <dst> <wt>)"<<endl; 
+/* cout<<"Enter the number of Edges:";
+   cin>>nEdge;
+   cout<<"Enter the vertices(<src> <dst> <wt>)"<<endl; 
    for(int i=0; i<nEdge; i++){
       cin>>graph[i].s;
       cin>>graph[i].d;
