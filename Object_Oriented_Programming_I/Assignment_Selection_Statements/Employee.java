@@ -1,7 +1,7 @@
 class Employee{
 
    //@ Attributes
-   private int empId;//{{{
+   private int empId;
    private String name;
    private String dept;
    private String designation;
@@ -17,10 +17,10 @@ class Employee{
    private double houseRent;
    private double commissionPer;
    private double houseRentPer;
-//}}}
+
 
    //@ Constructors.
-   public Employee(String name, int empId, String dept, String designation, double totalSalesAmount){//{{{
+   public Employee(String name, int empId, String dept, String designation, double totalSalesAmount){
      this.name = name;
      this.empId = empId;
      this.dept = dept;
@@ -59,10 +59,9 @@ class Employee{
 
    }
 
-//}}}
 
    //@ Set methods
-   void setEmpId(int empId){//{{{
+   void setEmpId(int empId){
       this.empId = empId;
    }
    void setName(String name){
@@ -87,10 +86,9 @@ class Employee{
       this.email = email;
    }
 
-   //}}}
 
    //@ Get Methods
-   int getImpId(){//{{{
+   int getImpId(){
 
       return this.empId;
    }
@@ -133,10 +131,8 @@ class Employee{
    double getHouseRentHouseRent(){
       return this.houseRent;
    }
-//}}}
 
    //@ Show methods
-//{{{
    public void showPaySlip(){
       System.out.println("------------------------------");
       System.out.println("---------Pay Slip-------------");
@@ -162,7 +158,7 @@ class Employee{
       System.out.println();
 
 
-   }//}}}
+   }
 
    //@ Main Method
    public static void main(String args[]){
