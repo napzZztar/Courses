@@ -51,12 +51,10 @@ class Employee{
      this.commission = (this.commissionPer / 100) * this.totalSalesAmount;
      this.houseRent = (this.houseRentPer / 100) * this.basicSalary;
      this.totalSalary = this.basicSalary + this.houseRent + this.medicalAllowance + this.totalSalesAmount;
-
    }
 
    public Employee(String name, int empId, String dept, String designation){
       this(name, empId, dept, designation, 0.0);
-
    }
 
 
@@ -156,8 +154,6 @@ class Employee{
       System.out.println("-------End of Pay Slip--------");
       System.out.println("------------------------------");
       System.out.println();
-
-
    }
 
    //@ Main Method
@@ -177,6 +173,5 @@ class Employee{
 
       emp1.showPaySlip();
       emp2.showPaySlip();
-
    }
 }

@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+#include <iostream> using namespace std;
 
 struct edg{
    char s;
@@ -19,8 +18,8 @@ int main(){
    edg graph[len];
    int temp;
    int sI, dI;
-   int cost = 0;
-   int paint = 0;
+   int cost   = 0;
+   int paint  = 0;
    int clr[8] = {0};
    //char *vrt;
    char vrt[8] = {"ABCDEFG"};
