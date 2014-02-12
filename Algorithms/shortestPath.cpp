@@ -22,7 +22,7 @@ int pred[20] = {-1};
 list<char> temp;
 
 void inGraph(){ 
-/* cout<<"Enter the number of Edges:";
+ cout<<"Enter the number of Edges:";
    cin>>nEdge;
    cout<<"Enter the vertices(<src> <dst> <wt>)"<<endl; 
    for(int i=0; i<nEdge; i++){
@@ -43,8 +43,8 @@ void inGraph(){
        nVert++;
    }
    
-*/
 
+/*
    nEdge = 11;
    nVert = 7;
    graph[0].s = 'A';
@@ -90,6 +90,7 @@ void inGraph(){
    graph[10].s = 'E';
    graph[10].d = 'F';
    graph[10].w = 7;
+   */
 }
 
 void shoGraph(){
