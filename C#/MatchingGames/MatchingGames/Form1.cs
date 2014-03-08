@@ -12,8 +12,8 @@ namespace MatchingGames
 {
     public partial class Form1 : Form
     {
-        int timeLeft;
-        int level = 1;
+        int timeLeft = 60;
+        int level = 0;
         int counter = -1;
         Label firstClick = null;
         Label secondClick = null;
@@ -83,8 +83,7 @@ namespace MatchingGames
                 Label iconLabel = control as Label;
 
                 if (iconLabel != null)
-                {
-                    //MessageBox.Show("Inside if");
+                {                    
                     int randmoNumber = random.Next(icons.Count);
                     iconLabel.Text = icons[randmoNumber];
                     icons.RemoveAt(randmoNumber);
@@ -92,6 +91,8 @@ namespace MatchingGames
                     iconLabel.ForeColor = iconLabel.BackColor;
                 }
             }
+            firstClick = null;
+            secondClick = null;
         }
 
 
@@ -116,12 +117,14 @@ namespace MatchingGames
             {
                 timeText.Text = --timeLeft + " Seconds";
             }
-            timer2.Stop();
-            MessageBox.Show("You failed to complete this level");
-            counter = -1;
-            AssignIconsToSquires();
-            firstClick = null;
-            secondClick = null;
+            else
+            {
+                timer2.Stop();
+                MessageBox.Show("You failed to complete this level");
+                counter = -1;
+                AssignIconsToSquires();
+                timeLeft = 60 - (level * 5);
+            }
         }
 
         //for 2 second preview
@@ -142,8 +145,7 @@ namespace MatchingGames
                 return;
 
             AssignIconsToSquires();
-            counter = 0;
-            timeLeft = timer2.Interval / 1000;
+            counter = 0;            
             //MessageBox.Show(" "+timeLeft);            
             showIcons();
             timer2.Start();
@@ -153,7 +155,7 @@ namespace MatchingGames
         private void previewButton_Click(object sender, EventArgs e)
         {
             showIcons();
-            timer2.Interval -= 500;
+            timeLeft -= 5;
         }
 
         //END THE GAME
@@ -195,10 +197,11 @@ namespace MatchingGames
                     secondClick = null;
                     if (++counter >= 8)
                     {
-                        MessageBox.Show("You completed this level");
+                        MessageBox.Show("You completed level"+level+"!!\nPlease press Start to play the next level.");
                         counter = -1;
-                        timer2.Interval -= 5000;
-                        levelCounter.Text = "0" + (++level);
+                        timeLeft = 60 - (++level * 5);
+                        levelCounter.Text = "0" + level;
+                        timer2.Stop();
                     }
                 }
                 else

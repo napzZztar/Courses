@@ -57,10 +57,10 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label17 = new System.Windows.Forms.Label();
             this.timeText = new System.Windows.Forms.TextBox();
+            this.previewButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.previewButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -390,7 +390,7 @@
             this.levelCounter.Name = "levelCounter";
             this.levelCounter.Size = new System.Drawing.Size(122, 20);
             this.levelCounter.TabIndex = 1;
-            this.levelCounter.Text = "01";
+            this.levelCounter.Text = "00";
             this.levelCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // startButton
@@ -438,23 +438,8 @@
             this.timeText.Name = "timeText";
             this.timeText.Size = new System.Drawing.Size(122, 20);
             this.timeText.TabIndex = 1;
-            this.timeText.Text = "200 Seconds";
+            this.timeText.Text = "60 Seconds";
             this.timeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 150;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 40000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // timer3
-            // 
-            this.timer3.Interval = 1000;
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // previewButton
             // 
@@ -466,6 +451,21 @@
             this.previewButton.Text = "Preview (-5 Sec)";
             this.previewButton.UseVisualStyleBackColor = true;
             this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 150;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 1000;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // Form1
             // 
