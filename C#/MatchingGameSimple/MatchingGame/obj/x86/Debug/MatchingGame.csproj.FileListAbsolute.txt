@@ -1,0 +1,25 @@
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\bin\Debug\MatchingGame.exe
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\bin\Debug\MatchingGame.pdb
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.Properties.Resources.resources
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.exe
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.pdb
+c:\users\pinkey\documents\visual studio 2010\Projects\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.MainForm.resources
+G:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.exe
+G:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.pdb
+G:\MatchingGame\MatchingGame\bin\Debug\MatchingGame.exe
+G:\MatchingGame\MatchingGame\bin\Debug\MatchingGame.pdb
+G:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.csprojResolveAssemblyReference.cache
+G:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.MainForm.resources
+G:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.Properties.Resources.resources
+G:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.csproj.GenerateResource.Cache
+D:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.exe
+D:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.pdb
+D:\MatchingGame\MatchingGame\bin\Debug\MatchingGame.exe
+D:\MatchingGame\MatchingGame\bin\Debug\MatchingGame.pdb
+D:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.csprojResolveAssemblyReference.cache
+D:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.MainForm.resources
+D:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.Properties.Resources.resources
+D:\MatchingGame\MatchingGame\obj\x86\Debug\MatchingGame.csproj.GenerateResource.Cache
