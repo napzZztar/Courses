@@ -74,8 +74,8 @@ namespace MatchingGames
         {
 
             List<string> icons = new List<string>(){
-            "!", "N", ",", "k", "b", "v", "w", "z",
-            "!", "N", ",", "k", "b", "v", "w", "z"
+            "!","!", "N","N", ",",",", "k","k",
+            "b","b", "v", "v","w", "w", "z", "z"
             };
             
             foreach (Control control in tableLayoutPanel2.Controls)
@@ -197,7 +197,7 @@ namespace MatchingGames
                     secondClick = null;
                     if (++counter >= 8)
                     {
-                        MessageBox.Show("You completed level"+level+"!!\nPlease press Start to play the next level.");
+                        MessageBox.Show("You completed level "+level+" !!\nPlease press Start to play the next level.");
                         counter = -1;
                         timeLeft = 60 - (++level * 5);
                         levelCounter.Text = "0" + level;
