@@ -22,7 +22,7 @@ int pred[20] = {-1};
 list<char> temp;
 
 void inGraph(){ 
- cout<<"Enter the number of Edges:";
+   cout<<"Enter the number of Edges:";
    cin>>nEdge;
    cout<<"Enter the vertices(<src> <dst> <wt>)"<<endl; 
    for(int i=0; i<nEdge; i++){
@@ -39,58 +39,58 @@ void inGraph(){
    nVert = 0;
 
    for(i = temp.begin(); i!=temp.end(); i++){
-       vert[nVert] = *i;
-       nVert++;
+      vert[nVert] = *i;
+      nVert++;
    }
-   
 
-/*
-   nEdge = 11;
-   nVert = 7;
-   graph[0].s = 'A';
-   graph[0].d = 'C';
-   graph[0].w = 1;
 
-   graph[1].s = 'B';
-   graph[1].d = 'D';
-   graph[1].w = 1;
+   /*
+      nEdge = 11;
+      nVert = 7;
+      graph[0].s = 'A';
+      graph[0].d = 'C';
+      graph[0].w = 1;
 
-   graph[2].s = 'A';
-   graph[2].d = 'B';
-   graph[2].w = 2;
+      graph[1].s = 'B';
+      graph[1].d = 'D';
+      graph[1].w = 1;
 
-   graph[3].s = 'C';
-   graph[3].d = 'D';
-   graph[3].w = 2;
+      graph[2].s = 'A';
+      graph[2].d = 'B';
+      graph[2].w = 2;
 
-   graph[4].s = 'G';
-   graph[4].d = 'F';
-   graph[4].w = 3;
+      graph[3].s = 'C';
+      graph[3].d = 'D';
+      graph[3].w = 2;
 
-   graph[5].s = 'B';
-   graph[5].d = 'C';
-   graph[5].w = 3;
+      graph[4].s = 'G';
+      graph[4].d = 'F';
+      graph[4].w = 3;
 
-   graph[6].s = 'B';
-   graph[6].d = 'G';
-   graph[6].w = 4;
+      graph[5].s = 'B';
+      graph[5].d = 'C';
+      graph[5].w = 3;
 
-   graph[7].s = 'C';
-   graph[7].d = 'F';
-   graph[7].w = 4;
+      graph[6].s = 'B';
+      graph[6].d = 'G';
+      graph[6].w = 4;
 
-   graph[8].s = 'D';
-   graph[8].d = 'G';
-   graph[8].w = 5;
+      graph[7].s = 'C';
+      graph[7].d = 'F';
+      graph[7].w = 4;
 
-   graph[9].s = 'D';
-   graph[9].d = 'E';
-   graph[9].w = 6;
+      graph[8].s = 'D';
+      graph[8].d = 'G';
+      graph[8].w = 5;
 
-   graph[10].s = 'E';
-   graph[10].d = 'F';
-   graph[10].w = 7;
-   */
+      graph[9].s = 'D';
+      graph[9].d = 'E';
+      graph[9].w = 6;
+
+      graph[10].s = 'E';
+      graph[10].d = 'F';
+      graph[10].w = 7;
+      */
 }
 
 void shoGraph(){
@@ -133,38 +133,38 @@ void bellFord(){
    bool flag = true;
    dist[0] = 0;
    for(int i=0; i<nEdge; i++){
-       uI = 0;
-       while(graph[i].s != vert[uI]){
-          uI++;
-       }
+      uI = 0;
+      while(graph[i].s != vert[uI]){
+         uI++;
+      }
 
-       vI = 0;
+      vI = 0;
 
-       while(graph[i].d != vert[vI]){
-          vI++;
-       }
+      while(graph[i].d != vert[vI]){
+         vI++;
+      }
 
-       relax(uI, vI, i);
+      relax(uI, vI, i);
    }
 
 
    for(int i=0; i<nEdge; i++){
-      
-       uI = 0;
-       while(graph[i].s != vert[uI]){
-          uI++;
-       }
 
-       vI = 0;
+      uI = 0;
+      while(graph[i].s != vert[uI]){
+         uI++;
+      }
 
-       while(graph[i].d != vert[vI]){
-          vI++;
-       }
+      vI = 0;
 
-       if(isRelax(uI, vI, i)){
-          cout<<"There is a cycle!"<<endl;
-          flag = true;
-       }
+      while(graph[i].d != vert[vI]){
+         vI++;
+      }
+
+      if(isRelax(uI, vI, i)){
+         cout<<"There is a cycle!"<<endl;
+         flag = true;
+      }
 
    }
 

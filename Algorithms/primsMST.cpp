@@ -46,10 +46,10 @@ void primMST(int graph[V][V]){
    for (int i = 1; i < V; i++)
    {
       int u = minKey(key, mstSet);
-      
+
       //include the min key to the tree
       mstSet[u] = true;
-      
+
       for (int v = 0; v < V; v++){
          if (graph[u][v] && !mstSet[v] && graph[u][v] <  key[v]){
             parent[v]  = u, key[v] = graph[u][v];

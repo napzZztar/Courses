@@ -28,14 +28,14 @@ void inpGraph(int len){
    edg te;
    vert tv;
    list<char> vTemp;
-   
+
    //@ taking input and keeping them in linklist
    for(int i=0; i<len; i++){
       cin>>te.src;
       cin>>te.dst;
       cin>>te.vlu;
       graph.push_back(te);
-      
+
       //@ keeping the vertex in a temp char list so dupli can be cancled
       vTemp.push_back(te.src);
       vTemp.push_back(te.dst);
