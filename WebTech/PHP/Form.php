@@ -102,6 +102,49 @@ if(isset($_POST["fSubmit"])){
             $err['emal'] = "<div style='color:FF0000'>&#171; <font size='2'><i>You have entered an invalid e-mail address</i></font></div>";
 
     }
+
+    //====================
+    //Check Password
+    //====================
+
+    if($pass == "")
+        $err["pass"] = "<div style='color:FF0000'>&#171; <font size='2'><i>Please enter a password</i></font></div>";
+    else if (strlen($pass) <7) {
+        $err["pass"] = "<div style='color:FF0000'>&#171; <font size='2'><i>Your password can't be less than 8 character</i></font></div>";
+    }else{
+        $cc = 0;
+        $nc = 0;
+
+        for ($i = 0; $i < strlen($pass); $i++) {
+            if(is_numeric($pass[$i]))
+                $nc++;
+            else
+                $cc++;
+        }
+
+        if($nc<1 || $cc < 1)
+            $err["pass"] = "<div style='color:FF0000'>&#171; <font size='2'><i>Your password must contain atleast one number and one charracter</i></font></div>";
+    }
+
+    //====================
+    //Check Re-Password
+    //====================
+
+    if($pass != $rePass)
+            $err["rePass"] = "<div style='color:FF0000'>&#171; <font size='2'><i>Doesn't match with the password</i></font></div>";
+
+    if(!isset($err)){
+        session_start();
+
+        $_SESSION['fName'] = $fName;
+        $_SESSION['mName'] = $mName;
+        $_SESSION['lName'] = $lName;
+        $_SESSION['aId']   = $aId;
+        $_SESSION['email'] = $email;
+        $_SESSION['pass']  = $pass;
+        $_SESSION['gend']  = $gend;
+        header("Location: Show.php");
+    }
 }
 ?>
 
@@ -153,14 +196,14 @@ if(isset($_POST["fSubmit"])){
                 <td width="50"></td>
                 <th align="Right">Password :</th>
                 <td><input type="password" name="pass" id="" value="" /></td>
-                <td></td>
+                <td><?=@$err['pass']?></td>
             </tr>
 
             <tr>
                 <td width="50"></td>
                 <th align="Right">Re-enter Password :</th>
                 <td><input type="password" name="rePass" id="" value="" /></td>
-                <td></td>
+                <td><?=@$err['rePass']?></td>
             </tr>
 
             <tr>
