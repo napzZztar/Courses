@@ -119,5 +119,6 @@ void prims(){
 
 int main(){
    
+    i = 10;
    return 0;
 }

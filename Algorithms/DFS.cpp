@@ -15,14 +15,14 @@ void DFS_Visit(int u){
     for(int i=1; i<7; i++){
         if(graph[u][i] == 1){
             if(vColor[i] == 'W'){
-                DFS_Visit(i);
-                aColor[u][i] = 'T';
-                parent[i] = u;
-            }else if(start[u] < start[i]){
-                aColor[u][i] = 'F';
-            }else{
-                aColor[u][i] = 'B';
-            }
+      DFS_Visit(i);
+      aColor[u][i] = 'T';
+      parent[i] = u;
+  }else if(start[u] < start[i]){
+      aColor[u][i] = 'F';
+  }else{
+      aColor[u][i] = 'B';
+  }
         }
     }
     vColor[u] = 'B';
