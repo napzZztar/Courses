@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+    <style>
+        #wrapper{
+            width: 960px;
+            margin:20px;
+        }
+
+        .head{ 
+            text-align:right;
+            padding-right: 10px;
+        }
+
+        .em{
+            width: 200px;
+            color:red;
+            font-size:9pt;
+        }
+    </style>
+
+<script type="text/javascript" charset="utf-8">
+function vName(){
+    var x = document.getElementById("iName");
+    if(x.value == ""){
+        document.getElementById("eNm").innerHTML="* Name Can't be empty";
+    }else if(x.value.length > 8){
+        document.getElementById("eNm").innerHTML="* Name Can't be more than 8 cahrs";
+    }else{
+        document.getElementById("eNm").innerHTML="";
+    }
+}
+
+function vPass(){
+    var x = document.getElementById("iPass");
+    if(x.value.length < 8){
+        document.getElementById("emPass").innerHTML="* Must be more than 8 cahr";
+    }else{
+        document.getElementById("emPass").innerHTML="&nbsp;";
+    }
+}
+
+function vEm(){
+    var em = document.getElementById("iEm");
+    var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    if (em.value == "" || !re.test(em.value))
+    {
+        document.getElementById("emEm").innerHTML="* Invalid Email";
+    }else{
+        document.getElementById("emEm").innerHTML="";
+    }
+}
+
+</script>
+
+</head>
+<body>
+<div id="wrapper" align="center">
+    <table>
+        <tr>
+            <th class="head">Name : </th>
+            <td><input id="iName" type="text" onblur="vName()"></td>
+            <td id="eNm" class="em" ></td>
+        </tr>
+        <tr>
+            <th class="head">Password: </th>
+            <td><input id="iPass" type="password" onblur="vPass()"></td>
+            <td id="emPass" class="em"></td>
+        </tr>
+        <tr>
+            <th class="head">E-mail: </th>
+            <td><input id="iEm" type="text" onblur="vEm()"></td>
+            <td id="emEm" class="em"></td>
+        </tr>
+        <tr>
+            <th class="head">Secret Question: </th>
+            <td><input id="iSq" type="text" name=""></td>
+            <td id="em"></td>
+        </tr>
+        <tr>
+            <th class="head">Secret ans: </th>
+            <td><input id="iSa" type="text" name=""></td>
+            <td id="emSa"></td>
+        </tr>
+        <tr>
+            <th class="head">Death Of Birth: </th>
+            <td><input id="iDob" type="date" name=""></td>
+            <td id="emDob"></td>
+        </tr>
+        <tr>
+            <th class="head"></th>
+            <td><input id="sub" type="submit" onclick="submit()" ></td>
+            <td id="emDob"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
