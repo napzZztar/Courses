@@ -19,6 +19,16 @@ if [ "$RESP" = "y" ] || [ "$RESP" = "Y" ]; then
     cd /usr/lib
     sudo chown $USER:$USER libglut.*
 
+    read -p "Do you want to coy the GLU files too? Y/N" RESP1
+    if [ "$RESP1" = "y" ] || [ "$RESP1" = "Y" ]; then
+        sudo cp /usr/lib/x86_64-linux-gnu/libGLU.a /usr/lib/
+        sudo cp /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/
+        sudo cp /usr/lib/x86_64-linux-gnu/libGLU.so.1 /usr/lib/
+        sudo cp /usr/lib/x86_64-linux-gnu/libGLU.so.1.3.1 /usr/lib/
+        sudo chown $USER:$USER libGLU.*
+    fi
+
+
     printf "\n\nNow be a bit SMARTASS and setup CodeBlocks yourself\n"
     echo "Thanks"
     
