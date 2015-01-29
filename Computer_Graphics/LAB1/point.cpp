@@ -5,14 +5,14 @@ void myInit(void);
 void myDisplay(void);
 
 int main(int argc, char** argv){
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(640, 480);
-    glutInitWindowPosition(100, 150);
-    glutCreateWindow("Point window");
-    glutDisplayFunc(myDisplay);
+    glutInit(&argc, argv); // Initializes the GLUT library
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); //sets the initial display mode (unsigned int mode)
+    glutInitWindowSize(640, 480); //name says what it does. :P
+    glutInitWindowPosition(100, 150); //position from the upper left conrner
+    glutCreateWindow("Point window"); //creates window, title as parameter
+    glutDisplayFunc(myDisplay); //comment this line, you'll see the magic
     myInit();
-    glutMainLoop();
+    glutMainLoop(); // keeps the current view till end, never returns
 
     return 0;
 }
