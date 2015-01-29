@@ -30,10 +30,10 @@ void myDisplay(void){
 }
 
 void myInit(void){
-    glClearColor(1.0, 1.0, 1.0, 0.0);
-    glColor3f(0.0f, 0.0f, 0.0f);
-    glPointSize(4.0);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0.0, 640.0, 0.0, 480.0);
+    glClearColor(1.0, 1.0, 1.0, 0.0); // sets the color for glClear()
+    glColor3f(0.0f, 0.0f, 0.0f); // does noting???
+    glPointSize(4.0); // you know what, but why is it here??
+    glMatrixMode(GL_PROJECTION); // not clear yet
+    glLoadIdentity(); // replace current matrix with identity matrix
+    gluOrtho2D(0.0, 640.0, 0.0, 480.0); //defines from where the matrix starts from "L,R,B,T"
 }
