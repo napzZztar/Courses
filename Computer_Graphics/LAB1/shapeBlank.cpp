@@ -30,18 +30,20 @@ void myDisplay(){
     glColor3f(0.0, 0.0, 0.0);
     glPointSize(4.0);
     //Drawing Triangle
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_LINE_STRIP);
     glVertex2i(550, 100);
     glVertex2i(550, 350);
     glVertex2i(750, 100);
+    glVertex2i(550, 100);
     glEnd();
 
     //Drawing Rectangle
-    glBegin(GL_TRIANGLE_STRIP);
+    glBegin(GL_LINE_STRIP);
     glVertex2i(100, 100);
     glVertex2i(500, 100);
-    glVertex2i(100, 400);
     glVertex2i(500, 400);
+    glVertex2i(100, 400);
+    glVertex2i(100, 100);
     glEnd();
     glFlush();
 }
