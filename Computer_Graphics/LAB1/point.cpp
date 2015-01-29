@@ -18,15 +18,15 @@ int main(int argc, char** argv){
 }
 
 void myDisplay(void){
-    glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(0.0, 0.0, 0.0);
-    glPointSize(4.0);
-    glBegin(GL_POINTS);
-    glVertex2i(100, 50);
-    glVertex2i(100, 130);
-    glVertex2i(150, 130);
-    glEnd();
-    glFlush();
+    glClear(GL_COLOR_BUFFER_BIT); //clears the current pixels
+    glColor3f(0.0, 0.0, 0.0); //background clolor of the screen
+    glPointSize(4.0); // whatever
+    glBegin(GL_POINTS); // defined what will be created (pint)
+    glVertex2i(100, 50);  // position of point
+    glVertex2i(100, 130); // position of point
+    glVertex2i(150, 130); // position of point
+    glEnd(); // end of pints
+    glFlush(); // implements and empties buffer
 }
 
 void myInit(void){
