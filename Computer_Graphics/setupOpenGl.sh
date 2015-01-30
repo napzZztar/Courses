@@ -4,9 +4,9 @@ echo "This might screw your OS or blow up your house."
 read -p "You wanna take the risk?? Y/N" RESP
 if [ "$RESP" = "y" ] || [ "$RESP" = "Y" ]; then
     printf "Installing packages\n\n"
-    sudo apt-get install build-essential
-    sudo apt-get install freeglut3-dbg freeglut3
-    sudo apt-get install libglewmx-dev glew-utils libgle3-dbg libglewmx-dbg libglew-dev libglewmx1.10 libglew1.10
+    sudo apt-get install -y build-essential
+    sudo apt-get install -y freeglut3-dbg freeglut3
+    sudo apt-get install -y libglewmx-dev glew-utils libgle3-dbg libglewmx-dbg libglew-dev libglewmx1.10 libglew1.10
     
 
     printf "Copying Files.\n\n"
