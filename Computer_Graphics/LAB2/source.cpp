@@ -5,26 +5,27 @@ using namespace std;
 
 int inPoints;
 int points[20][2];
+int pointsC[20][2];
 
-int promt();
+void promt();
 void myInit();
-void myDisplay();
-void translation();
-void rotation();
-void scaling();
+void showPolygon();
+void translation(int n[2]);
+void rotation(int n[2]);
+void scaling(int n[2]);
 
 int main(int argc, char** argv){
-    
-    cout<<promt();
 
-    // glutInit(&argc, argv);
-    // glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    // glutInitWindowSize(800, 800);
-    // glutInitWindowPosition(100, 100);
-    // glutCreateWindow("Transformation");
-    // glutDisplayFunc(myDisplay);
-    // myInit();
-    // glutMainLoop();
+    promt();
+
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(800, 800);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Transformation");
+    glutDisplayFunc(showPolygon);
+    myInit();
+    glutMainLoop();
     return 0;
 }
 
@@ -35,7 +36,32 @@ void myInit(){
     gluOrtho2D(0, 800, 0, 800);
 }
 
-int promt(){
+void showPolygon(){
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    //before transformation
+    glColor3f(0.5, 0.5, 0.5);
+    glPointSize(4.0);
+    glBegin(GL_POLYGON);
+
+    for (int i = 0; i < inPoints; i++) {
+        glVertex2i(points[i][0], points[i][1]);
+    }
+    glEnd();
+
+    //after transformation
+    glColor3f(0.5, 1.0, 1.0);
+    glBegin(GL_POLYGON);
+    for (int i = 0; i < inPoints; i++) {
+        glVertex2i(pointsC[i][0], pointsC[i][1]);
+    }
+    glEnd();
+
+    glFlush();
+}
+
+void promt(){
+    int factor[2];
     int choice;
     cout<<"Enter Your Choice: "<<endl;
     cout<<"\t1. Translation"<<endl;
@@ -47,7 +73,7 @@ int promt(){
     cin>>choice;
     if (choice<1 || choice>3)
         exit(0);
-    
+
     cout<<"Enter the number of points: ";
     cin>>inPoints;
 
@@ -57,22 +83,39 @@ int promt(){
         cin>>points[i][0]>>points[i][1];
     }
 
-    return choice;
+    cout<<endl<<"Enter Transformation Factor (x y) :\t";
+    cin>>factor[0]>>factor[1];
+
+    switch(choice){
+        case 1:
+            translation(factor);
+            break;
+        case 2:
+            rotation(factor);
+            break;
+        case 3:
+            scaling(factor);
+    }
+
 }
 
-// void myDisplay(){
-//     glClear(GL_COLOR_BUFFER_BIT);
-//     glColor3f(0.0, 0.0, 0.0);
-//     glPointSize(5.0);
-//
-//     glBegin(GL_POINTS);
-//     glVertex2i(100, 200);
-//     glEnd();
-//
-//     glBegin(GL_POINTS);
-//     glColor3f(1, 0, 0);
-//     glVertex2i(100+x, 200+y);
-//     glEnd();
-//
-//     glFlush();
-// }
+
+void translation(int n[2]){
+    cout<<"Initating Translation";
+    for (int i = 0; i < inPoints; i++) {
+        pointsC[i][0] = points[i][0]+n[0];
+        pointsC[i][1] = points[i][1]+n[1];
+    }
+}
+
+void rotation(int n[2]){
+
+}
+
+void scaling(int n[2]){
+    cout<<"Initating Scaling";
+    for (int i = 0; i < inPoints; i++) {
+        pointsC[i][0] = points[i][0]*n[0];
+        pointsC[i][1] = points[i][1]*n[1];
+    }
+}
