@@ -3,14 +3,19 @@
 #include <GL/glut.h>
 using namespace std;
 
+int inPoints;
+int points[20][2];
 
 int promt();
 void myInit();
 void myDisplay();
+void translation();
+void rotation();
+void scaling();
 
 int main(int argc, char** argv){
     
-    promt();
+    cout<<promt();
 
     // glutInit(&argc, argv);
     // glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
@@ -20,7 +25,6 @@ int main(int argc, char** argv){
     // glutDisplayFunc(myDisplay);
     // myInit();
     // glutMainLoop();
-    cout<<"Wrong"<<endl;
     return 0;
 }
 
@@ -33,15 +37,25 @@ void myInit(){
 
 int promt(){
     int choice;
-    cout<<"Enger Your Choice: "<<endl;
-    cout<<"1. Translation"<<endl;
-    cout<<"2. Rotation"<<endl;
-    cout<<"3. Scaling"<<endl;
-    cout<<"4. Exit"<<endl;
+    cout<<"Enter Your Choice: "<<endl;
+    cout<<"\t1. Translation"<<endl;
+    cout<<"\t2. Rotation"<<endl;
+    cout<<"\t3. Scaling"<<endl;
+    cout<<"\t0. Exit"<<endl;
+    cout<<":>";
 
     cin>>choice;
     if (choice<1 || choice>3)
         exit(0);
+    
+    cout<<"Enter the number of points: ";
+    cin>>inPoints;
+
+    cout<<"Plese enter the coordinates."<<endl;
+    for (int i = 0; i < inPoints; i++) {
+        cout<<"Coordinate "<<i<<" (x y) :\t";
+        cin>>points[i][0]>>points[i][1];
+    }
 
     return choice;
 }
