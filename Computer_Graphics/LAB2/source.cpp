@@ -12,8 +12,8 @@ using namespace std;
 #define PI 3.14159
 
 int inPoints;
-int points[20][2];
-int pointsC[20][2];
+float points[20][2];
+float pointsC[20][2];
 
 void promt();
 void myInit();
@@ -120,8 +120,8 @@ void translation(int n[2]){
 }
 
 void rotation(int n){
-    int r;
-    int th1;
+    float r;
+    float th1;
     for (int i = 0; i < inPoints; i++) {
 
         th1 = (atan(points[i][1]/ points[i][0])*180) / PI;
