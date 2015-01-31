@@ -105,6 +105,8 @@ void promt(){
             rotation(factor[0]);
             break;
         case 3:
+            cout<<endl<<"Enter Scaling Factor (x y) :\t";
+            cin>>factor[0]>>factor[1];
             scaling(factor);
     }
 
