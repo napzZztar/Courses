@@ -37,12 +37,12 @@ void Chase(){
     glColor3i(0, 0, 0);
     glPointSize(1.0);
 
-    for (int i = 0; i < 800; i+=100) {
-        for (int j=0; j < 800; j+=100) {
-            if( ((i/100)%2==0) && ((j/100)%2==0) )
-                DrawSquare(i,j);
-            else if( ((i/100)%2!=0) && ((j/100)%2!=0) )
-                DrawSquare(i,j);
+    for (int i = 0; i <8; i++) {
+        for (int j=0; j <8; j++) {
+            if( (i%2==0) && (j%2==0) )
+                DrawSquare(i*100,j*100);
+            else if( (i%2!=0) && (j%2!=0) )
+                DrawSquare(i*100,j*100);
         }
     }
 
