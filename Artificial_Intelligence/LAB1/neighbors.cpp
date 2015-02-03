@@ -33,12 +33,14 @@ int main(){
     }
 
     cout<<endl<<"Enter a node :\t";
+    cin>>node;
+    cout<<endl<<"Adjacent nodes: ";
 
-    for (int i = 0; i < 6; i++) {
-        for (int j = 0; j < 6; j++) {
-            if((i == node || j == node) )
-        }
+    for (int j = 0; j < 6; j++) {
+        if(graph[node-1][j] || graph[j][node-1])
+            cout<<j+1<<", ";
     }
+    cout<<endl;
 
     return 0;
 }
