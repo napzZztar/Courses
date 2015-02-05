@@ -176,7 +176,7 @@ void createTable(){
 
     for (int i = 0; i < noOfData; i++) {
         for (int j = 0; j < fn; j++) {
-            if(data[i] <= table[j].higher){
+            if(data[i] < table[j].higher){
                 table[j].freaqu++;
                 break;
             }
