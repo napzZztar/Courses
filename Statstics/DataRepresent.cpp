@@ -94,7 +94,7 @@ void drawGraph(){
 }
 
 void drawRect(int x, int l){
-    x *= 10;
+    x *= 5;
     l *= 10;
 
     glBegin(GL_POLYGON);
@@ -114,12 +114,19 @@ void myInit(){
 
 void myDisplay(){
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3i(0, 0, 0);
+    glColor3f(0, 0, 0);
     glPointSize(4.0);
 
     //* All the things to draw *****
     drawGraph();
-    drawRect(5, 10);
+    for (int i = 0; i < fn; i++) {
+        if(i%2==0)
+            glColor3f(((float)i/fn), 0.5, 0.5);
+        else
+            glColor3f(0.5, 0.5, ((float)i/fn));
+
+        drawRect(table[i].lower, table[i].freaqu);
+    }
 
     glFlush();
 
