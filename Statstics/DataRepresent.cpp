@@ -121,10 +121,7 @@ void myDisplay(){
     //* All the things to draw *****
     drawGraph();
     for (int i = 0; i < fn; i++) {
-        if(i%2==0)
-            glColor3f(((float)i/fn), 0.5, 0.5);
-        else
-            glColor3f(0.5, 0.5, ((float)i/fn));
+        glColor3f(0.5, 0.5, ((float)i/fn));
 
         drawRect(table[i].lower, table[i].freaqu);
     }
@@ -160,7 +157,7 @@ void createTable(){
     }
 
     h = ceil((max-min)/(1+3.3*log10(noOfData)));
-    
+
     table[0].lower = min;
     table[0].higher = min+h;
 

@@ -50,7 +50,7 @@ void showPolygon(){
     //before transformation
     glColor3f(0.5, 0.5, 0.5);
     glPointSize(4.0);
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
 
     for (int i = 0; i < inPoints; i++) {
         glVertex2i(points[i][0], points[i][1]);
@@ -59,7 +59,7 @@ void showPolygon(){
 
     //after transformation
     glColor3f(1.0, 0.0, 0.0);
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
     for (int i = 0; i < inPoints; i++) {
         cout<<pointsC[i][0]<<" - "<<pointsC[i][1]<<endl;
         glVertex2i(pointsC[i][0], pointsC[i][1]);
