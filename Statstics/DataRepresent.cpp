@@ -55,7 +55,8 @@ int main(int argv, char** argc){
 //******************************
 
 void drawGraph(){
-    glLineWidth(2.5);
+    glColor3f(1.0, 0.0, 0.0);
+    glLineWidth(4.0);
     glBegin(GL_LINES);
     glVertex2i(-100, 0);
     glVertex2i(700, 0);
@@ -67,7 +68,7 @@ void drawGraph(){
     glLineWidth(1);
     glBegin(GL_LINES);
 
-    for (int i = 1; i < 70; i++) {
+    for (int i = -10; i < 70; i++) {
         if(i%5 == 0){
             glEnd();
             glLineWidth(2.0);
