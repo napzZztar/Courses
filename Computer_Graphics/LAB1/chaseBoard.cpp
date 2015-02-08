@@ -9,15 +9,15 @@
 
 void myInit();
 void DrawSquare(int x, int y);
-void Chase();
+void Chesse();
 
 int main(int argc, char** argv){
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(800, 800);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("Chase");
-    glutDisplayFunc(Chase);
+    glutCreateWindow("Chesse");
+    glutDisplayFunc(Chesse);
     myInit();
     glutMainLoop();
     return 0;
@@ -32,9 +32,9 @@ void DrawSquare(int x, int y){
     glEnd();
 }
 
-void Chase(){
+void Chesse(){
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3i(0, 0, 0);
+    glColor3f(0, 0, 0);
     glPointSize(1.0);
 
     for (int i = 0; i <8; i++) {
