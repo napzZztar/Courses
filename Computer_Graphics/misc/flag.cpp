@@ -22,7 +22,7 @@ int main(int argc, char **argv){
 
 void myDisplay(){
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3f(1.0, 0.0, 0.0);
     glPointSize(2.0);
     drawCircle(361, 200);
 
@@ -40,7 +40,7 @@ void drawCircle(int x, int r){
 }
 
 void glutInit(){
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(0.0, 0.35, 0.11, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(-450, 550, -300, 300);
