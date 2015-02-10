@@ -35,7 +35,6 @@ void drawCircle(int x, int r){
     for (float i = 0; i<=((x*3.1416)/180); i+=0.01) {
         glVertex2f((r*cos(i)), (r*sin(i)));
     }
-
     glEnd();
 }
 
