@@ -1,10 +1,9 @@
-#include <stdio.h>
 #include <GL/glut.h>
 #include <math.h>
 
 void myDisplay();
 void glutInit();
-void drawCircle(int x, int r);
+void drawCircle(int a, int r);
 
 int main(int argc, char **argv){
     glutInit(&argc, argv);
@@ -29,10 +28,10 @@ void myDisplay(){
     glFlush();
 }
 
-void drawCircle(int x, int r){
+void drawCircle(int a, int r){
     glBegin(GL_TRIANGLE_FAN);
     glVertex2d(0, 0);
-    for (float i = 0; i<=((x*3.1416)/180); i+=0.01) {
+    for (float i = 0; i<=((a*3.1416)/180); i+=0.01) {
         glVertex2f((r*cos(i)), (r*sin(i)));
     }
     glEnd();
