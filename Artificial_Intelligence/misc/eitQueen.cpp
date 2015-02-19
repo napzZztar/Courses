@@ -1,4 +1,6 @@
 #include <iostream>
+#include <GL/glut.h>
+#include <math.h>
 
 using namespace std;
 
@@ -14,14 +16,29 @@ int board[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0}};
 
+// find methods
 int placeQueen(int row);
 void solve();
 void print();
 
+//openGL methods
+void myInit();
+void DrawSquare(int x, int y);
+void Chess();
+void drawCircle(int x, int y);
 
-int main(){
+int main(int argc, char **argv){
     solve();
-    print();
+
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(800, 800);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Chess");
+    glutDisplayFunc(Chess);
+    myInit();
+    glutMainLoop();
+
     return 0;
 }
 
@@ -90,4 +107,54 @@ void print(){
         }
         cout<<endl<<endl;
     }
+}
+
+
+
+
+void DrawSquare(int x, int y){
+    glBegin(GL_QUADS);
+    glVertex2i(x, y);
+    glVertex2i(x, y+100);
+    glVertex2i(x+100, y+100);
+    glVertex2i(x+100, y);
+    glEnd();
+}
+
+void Chess(){
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    for (int i = 0; i <8; i++) {     //along X axis
+        for (int j=0; j <8; j++) {   //along Y axis
+            if( (i%2==0) && (j%2==0) )
+                DrawSquare(i*100,j*100);
+            else if( (i%2!=0) && (j%2!=0) )
+                DrawSquare(i*100,j*100);
+
+            if(board[i][j] == 1){
+                glColor4f(0.5, 0.5, 0.5, 0.5);
+                drawCircle(i*100+50, j*100+50);
+                glColor3f(0, 0, 0);
+            }
+        }
+    }
+
+    glFlush();
+}
+
+void myInit(){
+    glClearColor(1.0, 1.0, 1.0, 0.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, 800, 0, 800);
+}
+
+void drawCircle(int x, int y){
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2d(x, y);
+    for (float i = 0; i<=((362*3.1416)/180); i+=0.01) {
+        glVertex2f(x+(40*cos(i)), y+(40*sin(i)));
+    }
+
+    glEnd();
 }
