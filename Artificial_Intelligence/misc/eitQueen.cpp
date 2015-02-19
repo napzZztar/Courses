@@ -16,8 +16,12 @@ int board[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
 
 int placeQueen(int row);
 void solve();
+void print();
+
 
 int main(){
+    solve();
+    print();
     
     return 0;
 }
@@ -65,4 +69,13 @@ int placeQueen(int row){
     }
 
     return 9;
+}
+
+void print(){
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            cout<<board[i][j]<<" - ";
+        }
+        cout<<endl;
+    }
 }
