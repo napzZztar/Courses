@@ -21,31 +21,32 @@ void print();
 
 int main(){
     solve();
-
+    print();
     return 0;
 }
 
 void solve(){
     int temp;
-    int lastCol;
-    for (int i = 0; i < 8;) {
-        cout<<i<<endl<<endl;
-        temp = placeQueen(i);
+    for (int row = 0; row < 8; row++) {
+        temp = placeQueen(row);
 
         if (temp == 9) {
-            board[--i][lastCol] = 2;
-            for (int j = i; j < 8; j++) {
-                for (int k = lastCol+1; k < 8; k++) {
+            row--;
+            
+            for (int i = 8; i >= 0; i--) {
+                if(board[row][i] == 1){
+                    board[row][i] = 2;
+                    break;
+                }
+            }
+
+            for (int j = row+1; j < 8; j++) {
+                for (int k = 0; k < 8; k++) {
                     board[j][k] = 0;
                 }
             }
-        }else{
-            lastCol= temp;
-            i++;
         }
 
-        print();
-        cout<<endl<<"=============================="<<endl<<endl;
     }
 }
 
@@ -61,9 +62,18 @@ int placeQueen(int row){
                     possible = false;
                     break;
                 }
-                if(!possible)
-                    break;
+
+                for (int k = 0; k < 8; k++) {
+                    if(((j+k) == (row+col)) || (j-k) == (row - col)){
+                        if(board[j][k] == 1){
+                            possible = false;
+                            break;
+                        }
+                    }
+                }
             }
+
+
 
             if(possible){
                 board[row][col] = 1;
