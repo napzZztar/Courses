@@ -32,7 +32,6 @@ void solve(){
 
         if (temp == 9) {
             row--;
-            
             for (int i = 8; i >= 0; i--) {
                 if(board[row][i] == 1){
                     board[row][i] = 2;
@@ -45,8 +44,8 @@ void solve(){
                     board[j][k] = 0;
                 }
             }
+            row--;
         }
-
     }
 }
 
@@ -72,8 +71,6 @@ int placeQueen(int row){
                     }
                 }
             }
-
-
 
             if(possible){
                 board[row][col] = 1;
