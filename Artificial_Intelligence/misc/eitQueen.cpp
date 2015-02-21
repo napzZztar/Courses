@@ -110,8 +110,6 @@ void print(){
 }
 
 
-
-
 void DrawSquare(int x, int y){
     glBegin(GL_QUADS);
     glVertex2i(x, y);
