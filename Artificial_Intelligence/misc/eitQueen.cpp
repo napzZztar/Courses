@@ -7,14 +7,7 @@ using namespace std;
 // 0 = not tried yet
 // 1 = queen
 // 2 = won't work
-int board[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0}};
+int board[8][8] = {0};
 
 // find methods
 int placeQueen(int row);
@@ -29,6 +22,7 @@ void drawCircle(int x, int y);
 
 int main(int argc, char **argv){
     solve();
+    print();
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
