@@ -97,8 +97,23 @@ void spinDisplayReverse(void){
 }
 
 void mouse(int button, int state, int x, int y){
-
+    switch (button) {
+        case GLUT_LEFT_BUTTON:
+            if(state==GLUT_DOWN)
+                glutIdleFunc(spinDisplay);
+            break;
+        case GLUT_MIDDLE_BUTTON:
+            if(state==GLUT_DOWN)
+                glutIdleFunc(NULL);
+            break;
+        case GLUT_RIGHT_BUTTON:
+            if(state==GLUT_DOWN)
+                glutIdleFunc(spinDisplayReverse);
+            break;
+        default:
+    }
 }
+
 void keyboard(unsigned char key, int x, int y){
 
 }
