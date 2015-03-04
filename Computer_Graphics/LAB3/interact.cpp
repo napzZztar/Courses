@@ -67,8 +67,14 @@ void reset(){
 }
 
 void reshape(int w, int h){
-
+    glViewport(0,0, (GLsizei)w, (GLsizei)h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(100.0f, (GLsizei)w/(GLsizei)h, 1.0f, 100.0f);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }
+
 void spinDisplay(void){
 
 }
