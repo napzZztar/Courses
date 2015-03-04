@@ -57,8 +57,15 @@ void setSpin(float x,float y,float z){
 }
 
 void reset(){
+    spin_x = 0;
+    spin_y = 1;
+    spin_z = 0;
 
+    translate_x = 0.0;
+    translate_y = 0.0;
+    translate_z = -30.0;
 }
+
 void reshape(int w, int h){
 
 }
