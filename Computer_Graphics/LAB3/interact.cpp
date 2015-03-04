@@ -77,10 +77,25 @@ void reshape(int w, int h){
 
 void spinDisplay(void){
 
-}
-void spinDisplayReverse(void){
+    spin += spin_speed;
 
+    if (spin>360.0) {
+        
+        spin -= 360.0;
+    }
+    glutPostRedisplay();
 }
+
+void spinDisplayReverse(void){
+    spin -= spin_speed;
+
+    if (spin<360.0) {
+        
+        spin += 360.0;
+    }
+    glutPostRedisplay();
+}
+
 void mouse(int button, int state, int x, int y){
 
 }
