@@ -12,7 +12,7 @@ float translate_z = -30.0;
 
 void myInit();
 void myDisplay();
-void setSpin();
+void setSpin(float x,float y,float z);
 void reset();
 void reshape(int w, int h);
 void spinDisplay(void);
@@ -42,12 +42,20 @@ void myInit(){
 
 void myDisplay(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    glTranslatef(translate_x, translate_y, translate_z);
+    glRotatef(spin, spin_x, spin_y, spin_z);
+
+    glutSwapBuffers();
+}
+
+void setSpin(float x,float y,float z){
+    spin_x = x;
+    spin_y = y;
+    spin_z = z;
 
 }
 
-void setSpin(){
-
-}
 void reset(){
 
 }
