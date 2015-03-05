@@ -6,7 +6,7 @@ using namespace std;
 int obj = 0;
 
 static GLfloat spin = 0.0;
-static GLfloat spin_speed = 1.0;
+static GLfloat spin_speed = 20.0;
 float spin_x = 0;
 float spin_y = 1;
 float spin_z = 0;
@@ -49,63 +49,36 @@ void drawSphare(int x, int r){
         glBegin(GL_LINES);
         for (float i = 0; i<=((x*3.1416)/180); i+=0.01) {
             glColor4f(j/r, i/3.1416, i/j, j-1);
-            glVertex3f((j*cos(i)), (j*sin(i)), j);
+            glVertex3f((j*cos(i)), j, (j*sin(i)));
         }
         glEnd();
     }
 
 }
 
-void drawColorCube(){
-    glTranslatef(translate_x, translate_y, translate_z);
-    glRotatef(spin, spin_x, spin_y, spin_z);
+void drawColorCube(int x, int y, int z, int s){
     glBegin(GL_TRIANGLE_STRIP);
-    glVertex2i(1, 1);
-    glVertex2i(5, 1);
-    glVertex2i(1, 5);
-    glVertex2i(5, 5);
+    glVertex2i(x, y);
+    glVertex2i(x+s, y);
+    glVertex2i(x, y+s);
+    glVertex2i(x+s, y+s);
     glEnd();
 
     glColor4f(0.5, 0.5, 0.0, 1.0);
     glBegin(GL_TRIANGLE_STRIP);
-    glVertex3i(1, 1, 5);
-    glVertex3i(5, 1, 5);
-    glVertex3i(1, 5, 5);
-    glVertex3i(5, 5, 5);
+    glVertex3i(x, y, z+s);
+    glVertex3i(x+s, y, z+s);
+    glVertex3i(x, y+s, z+s);
+    glVertex3i(x+s, y+s, z+s);
     glEnd();
 
-    glColor4f(0.5, 0.0, 0.5, 1.0);
-    glBegin(GL_TRIANGLE_STRIP);
-    glVertex3i(1, 1, 0);
-    glVertex3i(5, 1, 0);
-    glVertex3i(1, 1, 5);
-    glVertex3i(5, 1, 5);
-    glEnd();
-
-    glColor4f(0.4, 0.0, 0.9, 1.0);
-    glBegin(GL_TRIANGLE_STRIP);
-    glVertex3i(1, 5, 0);
-    glVertex3i(5, 5, 0);
-    glVertex3i(1, 5, 5);
-    glVertex3i(5, 5, 5);
-    glEnd();
-
-    glColor4f(0.4, 0.9, 0.9, 1.0);
-    glBegin(GL_TRIANGLE_STRIP);
-    glVertex3i(1, 1, 0);
-    glVertex3i(1, 5, 0);
-    glVertex3i(1, 1, 5);
-    glVertex3i(1, 5, 5);
-    glEnd();
-
-
-    for (float i = 0; i <= 5; i+=0.05) {
-        glColor4f(i/5, (1-i)/5, 0.5, 1.0);
+    for (float i = z; i <= z+s; i+=0.05) {
+        glColor4f(i/s, (1-i)/s, 0.5, 1.0);
         glBegin(GL_LINE_LOOP);
-        glVertex3f(1, 1, i);
-        glVertex3f(5, 1, i);
-        glVertex3f(5, 5, i);
-        glVertex3f(1, 5, i);
+        glVertex3f(x, y, i);
+        glVertex3f(x+s, y, i);
+        glVertex3f(x+s, y+s, i);
+        glVertex3f(x, y+s, i);
         glEnd();
     }
 
@@ -121,18 +94,17 @@ void init(){
 void myDisplay(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    glTranslatef(0.0, 0.0, -30);
-
+    glTranslatef(translate_x, translate_y, translate_z);
     glColor3f(1.0, 0.5, 0.0);
+    drawColorCube(-2, -4, -2, 4);
 
     glPushMatrix();
-
-    drawColorCube();
+    glTranslatef(translate_x, translate_y, translate_z);
+    glRotatef(spin, spin_x, spin_y, spin_z);
     drawSphare(361, 2);
-
     glPopMatrix();
-    glFlush();
 
+    glFlush();
     glutSwapBuffers();
 }
 
