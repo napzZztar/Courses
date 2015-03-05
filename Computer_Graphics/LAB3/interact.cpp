@@ -1,4 +1,8 @@
 #include <GL/glut.h>
+#include <ostream>
+using namespace std;
+ 
+int obj = 0;
 
 static GLfloat spin = 0.0;
 static GLfloat spin_speed = 1.0;
@@ -22,14 +26,18 @@ void keyboard(unsigned char key, int x, int y);
 
 int main(int argc, char **argv){
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(1024, 768);
     glutInitWindowPosition(0,0);
     glutCreateWindow("Keyboard and mouse interaction");
-    glutDisplayFunc(myDisplay);
     init();
+    glutDisplayFunc(myDisplay);
+    glutReshapeFunc(reshape);
+    glutMouseFunc(mouse);
+    glutKeyboardFunc(keyboard);
+
     glutMainLoop();
-    
+    glutSwapBuffers();
     return 0;
 }
 
@@ -44,23 +52,54 @@ void myDisplay(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef(translate_x, translate_y, translate_z);
-    glRotatef(spin, spin_x, spin_y, spin_z);
 
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3f(1.0, 0.5, 0.0);
+
+    if (obj == 1) {
+        glBegin(GL_TRIANGLES);
+        glVertex2i(5, 1);
+        glVertex2i(5, 3);
+        glVertex2i(7, 1);
+        glEnd();
+        glFlush();
+
+        glPushMatrix();
+        glTranslatef(translate_x, translate_y, translate_z);
+        glRotatef(spin, spin_x, spin_y, spin_z);
+        glBegin(GL_TRIANGLE_STRIP);
+        glVertex2i(-1, -1);
+        glVertex2i(-5, -1);
+        glVertex2i(-1, -4);
+        glVertex2i(-5, -4);
+        glEnd();
+        glPopMatrix();
+    }else{
+        glBegin(GL_TRIANGLE_STRIP);
+        glVertex2i(-1, -1);
+        glVertex2i(-5, -1);
+        glVertex2i(-1, -4);
+        glVertex2i(-5, -4);
+        glEnd();
+        glFlush();
+
+        glPushMatrix();
+        glTranslatef(translate_x, translate_y, translate_z);
+        glRotatef(spin, spin_x, spin_y, spin_z);
+        glBegin(GL_TRIANGLES);
+        glVertex2i(5, 1);
+        glVertex2i(5, 3);
+        glVertex2i(7, 1);
+        glEnd();
+        glPopMatrix();
+    }
+
+
+
     //Drawing Triangle
-    glBegin(GL_TRIANGLES);
-    glVertex2i(550, 100);
-    glVertex2i(550, 350);
-    glVertex2i(750, 100);
-    glEnd();
 
     //Drawing Rectangle
-    glBegin(GL_TRIANGLE_STRIP);
-    glVertex2i(100, 100);
-    glVertex2i(500, 100);
-    glVertex2i(100, 400);
-    glVertex2i(500, 400);
-    glEnd();
+
+    glFlush();
 
     glutSwapBuffers();
 }
@@ -69,7 +108,6 @@ void setSpin(float x,float y,float z){
     spin_x = x;
     spin_y = y;
     spin_z = z;
-
 }
 
 void reset(){
@@ -113,6 +151,7 @@ void spinDisplayReverse(void){
 }
 
 void mouse(int button, int state, int x, int y){
+
     switch (button) {
         case GLUT_LEFT_BUTTON:
             if(state==GLUT_DOWN)
@@ -132,6 +171,7 @@ void mouse(int button, int state, int x, int y){
 }
 
 void keyboard(unsigned char key, int x, int y){
+
     if (key=='x') {
         setSpin(1.0, 0.0, 0.0);
         glutPostRedisplay();
@@ -159,5 +199,9 @@ void keyboard(unsigned char key, int x, int y){
     }else if (key=='r') {
         reset();
         glutPostRedisplay();
+    }else if (key == '1') {
+        obj = 1;
+    }else{
+        obj = 0;
     }
 }
