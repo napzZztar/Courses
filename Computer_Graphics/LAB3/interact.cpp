@@ -10,7 +10,7 @@ float translate_x = 0.0;
 float translate_y = 0.0;
 float translate_z = -30.0;
 
-void myInit();
+void init();
 void myDisplay();
 void setSpin(float x,float y,float z);
 void reset();
@@ -27,14 +27,14 @@ int main(int argc, char **argv){
     glutInitWindowPosition(0,0);
     glutCreateWindow("Keyboard and mouse interaction");
     glutDisplayFunc(myDisplay);
-    myInit();
+    init();
     glutMainLoop();
     
     return 0;
 }
 
-void myInit(){
-    glClearColor(0,0,0,0);
+void init(){
+    glClearColor(1,1,1,0);
     glShadeModel(GL_SMOOTH);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
@@ -45,6 +45,22 @@ void myDisplay(void){
     glLoadIdentity();
     glTranslatef(translate_x, translate_y, translate_z);
     glRotatef(spin, spin_x, spin_y, spin_z);
+
+    glColor3f(0.0, 0.0, 0.0);
+    //Drawing Triangle
+    glBegin(GL_TRIANGLES);
+    glVertex2i(550, 100);
+    glVertex2i(550, 350);
+    glVertex2i(750, 100);
+    glEnd();
+
+    //Drawing Rectangle
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex2i(100, 100);
+    glVertex2i(500, 100);
+    glVertex2i(100, 400);
+    glVertex2i(500, 400);
+    glEnd();
 
     glutSwapBuffers();
 }
@@ -111,9 +127,37 @@ void mouse(int button, int state, int x, int y){
                 glutIdleFunc(spinDisplayReverse);
             break;
         default:
+            break;
     }
 }
 
 void keyboard(unsigned char key, int x, int y){
+    if (key=='x') {
+        setSpin(1.0, 0.0, 0.0);
+        glutPostRedisplay();
 
+    }else if (key=='y') {
+        setSpin(0.0, 1.0, 0.0);
+        glutPostRedisplay();
+
+    }else if (key=='z') {
+        setSpin(0.0, 0.0, 1.0);
+        glutPostRedisplay();
+
+    }else if (key=='a') {
+        setSpin(1.0, 1.0, 1.0);
+        glutPostRedisplay();
+
+    }else if (key=='i') {
+        translate_z++;
+        glutPostRedisplay();
+
+    }else if (key=='o') {
+        translate_z--;
+        glutPostRedisplay();
+
+    }else if (key=='r') {
+        reset();
+        glutPostRedisplay();
+    }
 }
