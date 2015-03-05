@@ -1,7 +1,8 @@
 #include <GL/glut.h>
 #include <ostream>
+#include <math.h>
 using namespace std;
- 
+
 int obj = 0;
 
 static GLfloat spin = 0.0;
@@ -23,6 +24,7 @@ void spinDisplay(void);
 void spinDisplayReverse(void);
 void mouse(int button, int state, int x, int y);
 void keyboard(unsigned char key, int x, int y);
+void drawSphare(int x, int r);
 
 int main(int argc, char **argv){
     glutInit(&argc, argv);
@@ -41,6 +43,74 @@ int main(int argc, char **argv){
     return 0;
 }
 
+void drawSphare(int x, int r){
+    
+    for(float j = 0; j<=r; j+=0.01){
+        glBegin(GL_LINES);
+        for (float i = 0; i<=((x*3.1416)/180); i+=0.01) {
+            glColor4f(j/r, i/3.1416, i/j, j-1);
+            glVertex3f((j*cos(i)), (j*sin(i)), j);
+        }
+        glEnd();
+    }
+
+}
+
+void drawColorCube(){
+    glTranslatef(translate_x, translate_y, translate_z);
+    glRotatef(spin, spin_x, spin_y, spin_z);
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex2i(1, 1);
+    glVertex2i(5, 1);
+    glVertex2i(1, 5);
+    glVertex2i(5, 5);
+    glEnd();
+
+    glColor4f(0.5, 0.5, 0.0, 1.0);
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3i(1, 1, 5);
+    glVertex3i(5, 1, 5);
+    glVertex3i(1, 5, 5);
+    glVertex3i(5, 5, 5);
+    glEnd();
+
+    glColor4f(0.5, 0.0, 0.5, 1.0);
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3i(1, 1, 0);
+    glVertex3i(5, 1, 0);
+    glVertex3i(1, 1, 5);
+    glVertex3i(5, 1, 5);
+    glEnd();
+
+    glColor4f(0.4, 0.0, 0.9, 1.0);
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3i(1, 5, 0);
+    glVertex3i(5, 5, 0);
+    glVertex3i(1, 5, 5);
+    glVertex3i(5, 5, 5);
+    glEnd();
+
+    glColor4f(0.4, 0.9, 0.9, 1.0);
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3i(1, 1, 0);
+    glVertex3i(1, 5, 0);
+    glVertex3i(1, 1, 5);
+    glVertex3i(1, 5, 5);
+    glEnd();
+
+
+    for (float i = 0; i <= 5; i+=0.05) {
+        glColor4f(i/5, (1-i)/5, 0.5, 1.0);
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(1, 1, i);
+        glVertex3f(5, 1, i);
+        glVertex3f(5, 5, i);
+        glVertex3f(1, 5, i);
+        glEnd();
+    }
+
+}
+
 void init(){
     glClearColor(1,1,1,0);
     glShadeModel(GL_SMOOTH);
@@ -51,54 +121,16 @@ void init(){
 void myDisplay(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    glTranslatef(translate_x, translate_y, translate_z);
+    glTranslatef(0.0, 0.0, -30);
 
     glColor3f(1.0, 0.5, 0.0);
 
-    if (obj == 1) {
-        glBegin(GL_TRIANGLES);
-        glVertex2i(5, 1);
-        glVertex2i(5, 3);
-        glVertex2i(7, 1);
-        glEnd();
-        glFlush();
+    glPushMatrix();
 
-        glPushMatrix();
-        glTranslatef(translate_x, translate_y, translate_z);
-        glRotatef(spin, spin_x, spin_y, spin_z);
-        glBegin(GL_TRIANGLE_STRIP);
-        glVertex2i(-1, -1);
-        glVertex2i(-5, -1);
-        glVertex2i(-1, -4);
-        glVertex2i(-5, -4);
-        glEnd();
-        glPopMatrix();
-    }else{
-        glBegin(GL_TRIANGLE_STRIP);
-        glVertex2i(-1, -1);
-        glVertex2i(-5, -1);
-        glVertex2i(-1, -4);
-        glVertex2i(-5, -4);
-        glEnd();
-        glFlush();
+    drawColorCube();
+    drawSphare(361, 2);
 
-        glPushMatrix();
-        glTranslatef(translate_x, translate_y, translate_z);
-        glRotatef(spin, spin_x, spin_y, spin_z);
-        glBegin(GL_TRIANGLES);
-        glVertex2i(5, 1);
-        glVertex2i(5, 3);
-        glVertex2i(7, 1);
-        glEnd();
-        glPopMatrix();
-    }
-
-
-
-    //Drawing Triangle
-
-    //Drawing Rectangle
-
+    glPopMatrix();
     glFlush();
 
     glutSwapBuffers();
@@ -134,7 +166,7 @@ void spinDisplay(void){
     spin += spin_speed;
 
     if (spin>360.0) {
-        
+
         spin -= 360.0;
     }
     glutPostRedisplay();
@@ -144,7 +176,7 @@ void spinDisplayReverse(void){
     spin -= spin_speed;
 
     if (spin<360.0) {
-        
+
         spin += 360.0;
     }
     glutPostRedisplay();
@@ -205,3 +237,5 @@ void keyboard(unsigned char key, int x, int y){
         obj = 0;
     }
 }
+
+
