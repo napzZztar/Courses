@@ -6,6 +6,8 @@ using namespace std;
 char obj = '0';
 
 static GLfloat spin = 0.0;
+static GLfloat spin_1 = 0.0;
+static GLfloat spin_2 = 0.0;
 static GLfloat spin_speed = 2.0;
 float spin_x = 0;
 float spin_y = 1;
@@ -104,7 +106,7 @@ void drawColorCube(int x, int y, int z, int s){
 }
 
 void init(){
-    glClearColor(1,1,1,0);
+    glClearColor(0,0,0,0);
     glShadeModel(GL_SMOOTH);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
@@ -129,6 +131,9 @@ void myDisplay(void){
         spin_x_2 = spin_x;
         spin_y_2 = spin_y;
         spin_z_2 = spin_z;
+
+        spin_1 = spin;
+        spin_2 = spin;
     }else if (obj == '1') {
         translate_x_1 = translate_x;
         translate_y_1 = translate_y;
@@ -138,6 +143,8 @@ void myDisplay(void){
         spin_y_1 = spin_y;
         spin_z_1 = spin_z;
 
+        spin_1 = spin;
+
     }else if (obj == '2'){
         translate_x_2 = translate_x;
         translate_y_2 = translate_y;
@@ -146,23 +153,26 @@ void myDisplay(void){
         spin_x_2 = spin_x;
         spin_y_2 = spin_y;
         spin_z_2 = spin_z;
+
+        spin_2 = spin;
     }
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glColor3f(1.0, 0.5, 0.0);
 
-    glPushMatrix();
-    glTranslatef(translate_x_2, translate_y_2, translate_z_2);
-    glRotatef(spin, spin_x_2, spin_y_2, spin_z_2);
-    drawColorCube(-2, -4, -2, 4);
-    glPopMatrix();
+    glBegin(GL_POINTS);
+    glVertex3i(0, 0, 0);
+    glEnd();
 
-    glPushMatrix();
+    glTranslatef(translate_x_2, translate_y_2, translate_z_2);
+    glRotatef(spin_2, spin_x_2, spin_y_2, spin_z_2);
+    drawColorCube(-2, -4, -2, 4);
+
+    glLoadIdentity();
     glTranslatef(translate_x_1, translate_y_1, translate_z_1);
-    glRotatef(spin, spin_x_1, spin_y_1, spin_z_1);
+    glRotatef(spin_1, spin_x_1, spin_y_1, spin_z_1);
     drawSphare(361, 2);
-    glPopMatrix();
 
 
     glFlush();
@@ -265,5 +275,6 @@ void keyboard(unsigned char key, int x, int y){
         glutPostRedisplay();
     }else{
         obj = key;
+        reset();
     }
 }
