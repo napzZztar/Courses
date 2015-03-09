@@ -124,7 +124,7 @@ void Chess(){
                 DrawSquare(i*100,j*100);
 
             if(board[i][j] == 1){
-                glColor4f(0.5, 0.5, 0.5, 0.5);
+                glColor4f(0.8, 0.8, 0.8, 0.8);
                 drawCircle(i*100+50, j*100+50);
                 glColor3f(0, 0, 0);
             }
