@@ -1,0 +1,253 @@
+1[1]. Include Library -> stdio.h 
+2[2]. Include Library -> string.h 
+3[3]. Include Library -> stdlib.h 
+4[4]. ---- empty line or comment 
+5[5]. Variable declaration, Name: "slNo"	Variable Type: "int" 
+--	"1" is assigned to the declared variable
+6[6]. Variable declaration, Name: "vSl"	Variable Type: "int" 
+--	"1" is assigned to the declared variable
+7[7]. Variable declaration, Name: "lnNo"	Variable Type: "int" 
+--	"1" is assigned to the declared variable
+8[8]. Variable declaration, Name: "*token"	Variable Type: "char" 
+9[9]. Variable declaration, Name: "temp[1000]"	Variable Type: "char" 
+10[10]. Variable declaration, Name: "typeCount"	Variable Type: "int" 
+11[11]. ---- empty line or comment 
+12[12]. Variable declaration, Name: "*bType[100]"	Variable Type: "char" 
+--	"{"int", "char", "float", "double", "short","long", "FILE"}" is assigned to the declared variable
+13[13]. Variable declaration, Name: "*clYpye[100]"	Variable Type: "char" 
+--	"{"if", "else if", "while", "for", "switch", "else"}" is assigned to the declared variable
+14[14]. Variable declaration, Name: "var[100][3][30]"	Variable Type: "char" 
+15[15]. ---- empty line or comment 
+16[16]. ---- empty line or comment 
+17[17]. ---- empty line or comment 
+18[18]. ---- empty line or comment 
+19[19]. Declaration of "belongsTo" function with "int" return type and "char *value, char *group[5], int gs" perm 
+20[20]. Variable declaration, Name: "i"	Variable Type: "int" 
+--	"0" is assigned to the declared variable
+21[21]. ---- empty line or comment 
+22[22]. Conditional Logic "for"
+23[23]. Conditional Logic "if"
+24[24]. End of function 
+25[25]. ____ Closing curly bracket.
+
+26[26]. ---- empty line or comment 
+27[27]. End of function 
+28[28]. ____ Closing curly bracket.
+
+29[29]. ---- empty line or comment 
+30[30]. Declaration of "exists" function with "int" return type and "char *str, char sy" perm 
+31[31]. Function call for "unsigned"
+32[32]. Conditional Logic "for"
+33[33]. Conditional Logic "if"
+34[34]. End of function 
+35[35]. ____ Closing curly bracket.
+
+36[36]. End of function 
+37[37]. ____ Closing curly bracket.
+
+38[38]. ---- empty line or comment 
+39[39]. Function call for "void"
+40[40]. Function call for "printf"
+41[41]. Function call for "printf"
+42[42]. Variable declaration, Name: "i"	Variable Type: "int" 
+--	"1" is assigned to the declared variable
+43[43]. Conditional Logic "while"
+44[44]. Conditional Logic "if"
+45[45]. Function call for "printf"
+46[46]. Conditional Logic "else"
+47[47]. Function call for "printf"
+48[48]. Function call for "i++"
+49[49]. ____ Closing curly bracket.
+
+50[50]. ____ Closing curly bracket.
+
+51[51]. ---- empty line or comment 
+52[52]. Declaration of "*trim" function with "char" return type and "char *str" perm 
+53[53]. Variable declaration, Name: "*end"	Variable Type: "char" 
+54[54]. ---- empty line or comment 
+55[55]. Conditional Logic "while"
+56[56]. ---- empty line or comment 
+57[57]. Conditional Logic "if"
+58[58]. End of function 
+59[59]. ---- empty line or comment 
+60[60]. Function call for "end"
+61[61]. Conditional Logic "while"
+62[62]. ---- empty line or comment 
+63[63]. Function call for "*"
+64[64]. ---- empty line or comment 
+65[65]. End of function 
+66[66]. ____ Closing curly bracket.
+
+67[67]. ---- empty line or comment 
+68[68]. ---- empty line or comment 
+69[69]. ---- empty line or comment 
+70[70]. ---- empty line or comment 
+71[71]. Declaration of "incLib" function with "int" return type and "char buf[1000]" perm 
+72[72]. Function call for "strcpy"
+73[73]. Function call for "token"
+74[74]. ---- empty line or comment 
+75[75]. Conditional Logic "if"
+76[76]. Function call for "token"
+77[77]. Function call for "printf"
+78[78]. End of function 
+79[79]. Function call for "else{"
+80[80]. End of function 
+81[81]. ____ Closing curly bracket.
+
+82[82]. ____ Closing curly bracket.
+
+83[83]. ---- empty line or comment 
+84[84]. ---- empty line or comment 
+85[85]. ---- empty line or comment 
+86[86]. ---- empty line or comment 
+87[87]. Declaration of "decMethod" function with "int" return type and "char buf[1000]" perm 
+88[88]. Function call for "strcpy"
+89[89]. ---- empty line or comment 
+90[90]. Conditional Logic "if"
+91[91]. Variable declaration, Name: "*rt"	Variable Type: "char" 
+92[92]. Variable declaration, Name: "*name"	Variable Type: "char" 
+93[93]. Variable declaration, Name: "*perm"	Variable Type: "char" 
+94[94]. ---- empty line or comment 
+95[95]. Function call for "rt"
+96[96]. Function call for "name"
+97[97]. Function call for "perm"
+98[98]. ---- empty line or comment 
+99[99]. Conditional Logic "if"
+100[100]. Function call for "perm"
+101[101]. ---- empty line or comment 
+102[102]. Function call for "printf"
+103[103]. End of function 
+104[104]. Conditional Logic "else"
+105[105]. End of function 
+106[106]. ____ Closing curly bracket.
+
+107[107]. ---- empty line or comment 
+108[108]. ---- empty line or comment 
+109[109]. ---- empty line or comment 
+110[110]. ---- empty line or comment 
+111[111]. Declaration of "decVar" function with "int" return type and "char buf[1000]" perm 
+112[112]. Variable declaration, Name: "*type"	Variable Type: "char" 
+113[113]. Declaration of "*c = " function with "char" return type and "char*" perm 
+114[114]. Conditional Logic "if"
+115[115]. Function call for "c"
+116[116]. ---- empty line or comment 
+117[117]. Function call for "strcpy"
+118[118]. Function call for "type"
+119[119]. ---- empty line or comment 
+120[120]. Conditional Logic "while"
+121[121]. Conditional Logic "if"
+122[122]. Function call for "//token"
+123[123]. Function call for "printf"
+124[124]. Function call for "strcpy"
+125[125]. Function call for "strcpy"
+126[126]. Function call for "strcpy"
+127[127]. Function call for "sprintf"
+128[128]. Function call for "vSl++"
+129[129]. ____ Closing curly bracket.
+
+130[130]. Conditional Logic "if"
+131[131]. End of function 
+132[132]. ____ Closing curly bracket.
+
+133[133]. End of function 
+134[134]. ____ Closing curly bracket.
+
+135[135]. ---- empty line or comment 
+136[136]. Function call for "void"
+137[137]. Variable declaration, Name: "*token"	Variable Type: "char" 
+138[138]. Function call for "token"
+139[139]. Function call for "token"
+140[140]. ---- empty line or comment 
+141[141]. Function call for "printf"
+142[142]. ____ Closing curly bracket.
+
+143[143]. ---- empty line or comment 
+144[144]. ---- empty line or comment 
+145[145]. Declaration of "main" function with "int" return type and "{" perm 
+146[146]. Variable declaration, Name: "buf[1000]"	Variable Type: "char" 
+147[147]. Variable declaration, Name: "*ptr_file"	Variable Type: "FILE" 
+148[148]. Function call for "typeCount"
+149[149]. ---- empty line or comment 
+150[150]. Function call for "ptr_file"
+151[151]. Conditional Logic "if"
+152[152]. End of function 
+153[153]. ---- empty line or comment 
+154[154]. Conditional Logic "while"
+155[155]. Function call for "trim"
+156[156]. Conditional Logic "if"
+157[157]. Function call for "printf"
+158[158]. Conditional Logic "else"
+159[159]. Function call for "printf"
+160[160]. Function call for "else{"
+161[161]. Conditional Logic "if"
+162[162]. Function call for "strcpy"
+163[163]. Function call for "token"
+164[164]. Function call for "token"
+165[165]. ---- empty line or comment 
+166[166]. Function call for "//"
+167[167]. Conditional Logic "if"
+168[168]. Function call for "token"
+169[169]. Function call for "printf"
+170[170]. Function call for "bType[typeCount++]"
+171[171]. Conditional Logic "else"
+172[172]. Function call for "strcpy"
+173[173]. Conditional Logic "if"
+174[174]. Function call for "strcpy"
+175[175]. Conditional Logic "if"
+176[176]. Function call for "decnAsgn"
+177[177]. Function call for "//printf"
+178[178]. ____ Closing curly bracket.
+
+179[179]. Function call for "else{"
+180[180]. Conditional Logic "while"
+181[181]. ---- empty line or comment 
+182[182]. Conditional Logic "if"
+183[183]. Function call for "printf"
+184[184]. Conditional Logic "else"
+185[185]. Function call for "printf"
+186[186]. Function call for "else{"
+187[187]. Function call for "printf"
+188[188]. ____ Closing curly bracket.
+
+189[189]. ____ Closing curly bracket.
+
+190[190]. ____ Closing curly bracket.
+
+191[191]. ____ Closing curly bracket.
+
+192[192]. Function call for "lnNo++"
+193[193]. ____ Closing curly bracket.
+
+194[194]. ---- empty line or comment 
+195[195]. Function call for "fclose"
+196[196]. ---- empty line or comment 
+197[197]. Function call for "printf"
+198[198]. ---- empty line or comment 
+199[199]. Function call for "printTable"
+200[200]. End of function 
+201[201]. ____ Closing curly bracket.
+
+==============================
+
+
+SL No. 	 Name 		 S.Name 	 Type
+_____________________________________________
+1 	 slNo 		 id1 		 int 
+2 	 vSl 		 id2 		 int 
+3 	 lnNo 		 id3 		 int 
+4 	 *token 	 id4 		 char 
+5 	 temp[1000] 	 id5 		 char 
+6 	 typeCount 	 id6 		 int 
+7 	 *bType[100] 	 id7 		 char 
+8 	 *clYpye[100] 	 id8 		 char 
+9 	 var[100][3][30] 	 id9 		 char 
+10 	 i 		 id10 		 int 
+11 	 i 		 id11 		 int 
+12 	 *end 		 id12 		 char 
+13 	 *rt 		 id13 		 char 
+14 	 *name 		 id14 		 char 
+15 	 *perm 		 id15 		 char 
+16 	 *type 		 id16 		 char 
+17 	 *token 	 id17 		 char 
+18 	 buf[1000] 	 id18 		 char 
+19 	 *ptr_file 	 id19 		 FILE 
