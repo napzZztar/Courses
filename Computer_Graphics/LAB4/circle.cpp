@@ -9,7 +9,7 @@ int center_y;
 int radious;
 
 void myDisplay();
-void glutInit();
+void myInit();
 void drawCircle(int x,int y, int r);
 
 int main(int argc, char **argv){
@@ -18,13 +18,13 @@ int main(int argc, char **argv){
     cout<<"Enter the radous: ";
     cin>>radious;
 
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(400, 400);
-    glutInitWindowPosition(100, 100);
+    myInit(&argc, argv);
+    myInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    myInitWindowSize(400, 400);
+    myInitWindowPosition(100, 100);
     glutCreateWindow("Circle");
     glutDisplayFunc(myDisplay);
-    glutInit();
+    myInit();
     glutMainLoop();
     
     return 0;
@@ -49,7 +49,7 @@ void drawCircle(int x, int y, int r){
     glEnd();
 }
 
-void glutInit(){
+void myInit(){
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
