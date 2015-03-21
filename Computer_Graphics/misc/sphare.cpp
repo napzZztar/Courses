@@ -28,24 +28,6 @@ void mouse(int button, int state, int x, int y);
 void keyboard(unsigned char key, int x, int y);
 void drawSphare(int r);
 
-int translate_x_1 = 0;
-int translate_y_1 = 0;
-int translate_z_1 = 0;
-
-int translate_x_2 = 0;
-int translate_y_2 = 0;
-int translate_z_2 = 0;
-
-int spin_x_1 = 0;
-int spin_y_1 = 0;
-int spin_z_1 = 0;
-
-int spin_x_2 = 0;
-int spin_y_2 = 0;
-int spin_z_2 = 0;
-
-
-
 
 int main(int argc, char **argv){
     glutInit(&argc, argv);
@@ -69,10 +51,10 @@ void drawSphare(int r){
     float y;
     float z;
 
-    for (float i = 0; i<=((361*3.1416)/180); i+=0.05) {
+    for (float i = 0; i<=((361*3.1416)/180); i+=0.1) {
         glColor3f(i/3.1416, 1-(i/3.1416), 1-i/3.1416);
         glBegin(GL_LINE_LOOP);
-        for (float j = 0; j<=((361*3.1416)/180); j+=0.1) {
+        for (float j = 0; j<=((361*3.1416)/180); j+=0.15) {
             z = r * cos(j);
             x = pow((r*r - z*z), .5) * cos(i);
             y = pow((r*r - z*z), .5) * sin(i);
@@ -93,55 +75,13 @@ void init(){
 void myDisplay(void){   
 
 
-    if (obj == '0') {
-        translate_x_1 = translate_x;
-        translate_y_1 = translate_y;
-        translate_z_1 = translate_z;
-
-        translate_x_2 = translate_x;
-        translate_y_2 = translate_y;
-        translate_z_2 = translate_z;
-
-        spin_x_1 = spin_x;
-        spin_y_1 = spin_y;
-        spin_z_1 = spin_z;
-
-        spin_x_2 = spin_x;
-        spin_y_2 = spin_y;
-        spin_z_2 = spin_z;
-
-        spin_1 = spin;
-        spin_2 = spin;
-    }else if (obj == '1') {
-        translate_x_1 = translate_x;
-        translate_y_1 = translate_y;
-        translate_z_1 = translate_z;
-
-        spin_x_1 = spin_x;
-        spin_y_1 = spin_y;
-        spin_z_1 = spin_z;
-
-        spin_1 = spin;
-
-    }else if (obj == '2'){
-        translate_x_2 = translate_x;
-        translate_y_2 = translate_y;
-        translate_z_2 = translate_z;
-
-        spin_x_2 = spin_x;
-        spin_y_2 = spin_y;
-        spin_z_2 = spin_z;
-
-        spin_2 = spin;
-    }
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glColor3f(1.0, 0.5, 0.0);
 
     glLoadIdentity();
-    glTranslatef(translate_x_1, translate_y_1, translate_z_1);
-    glRotatef(spin_1, spin_x_1, spin_y_1, spin_z_1);
+    glTranslatef(translate_x, translate_y, translate_z);
+    glRotatef(spin, spin_x, spin_y, spin_z);
     drawSphare(2);
 
 
@@ -243,8 +183,5 @@ void keyboard(unsigned char key, int x, int y){
     }else if (key=='r') {
         reset();
         glutPostRedisplay();
-    }else{
-        obj = key;
-        reset();
     }
 }
