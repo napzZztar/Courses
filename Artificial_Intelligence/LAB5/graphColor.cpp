@@ -8,7 +8,7 @@ using namespace std;
 int m;
 bool graph[V][V] = {0};
 int color[V] = {0};
-string colorName[6] = {" ", "Red", "Green", "Blue", "Yellow", "Black"};
+string colorName[6] = {" ", "Red", "Gre", "Blue", "Yellow", "Black"};
  
 void init();
 bool backTrack();
@@ -21,13 +21,13 @@ int main(){
     init();
     if(backTrack()){
         cout<<"\t";
-        for (int i = 0; i < V; i++)
-            cout<<i<<"("<<color[i]<<")\t";
+        for (int i = 1; i < V; i++)
+            cout<<i<<"("<<colorName[color[i]]<<")\t";
         cout<<endl;
             
         for (int i = 1; i < V; i++) {
-            cout<<i<<"("<<color[i]<<")\t";
-            for (int j = 0; j < V; j++) {
+            cout<<i<<"("<<colorName[color[i]]<<")\t";
+            for (int j = 1; j < V; j++) {
                 cout<<graph[i][j]<<"\t";
             }
             cout<<endl<<endl;
