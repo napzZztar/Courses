@@ -10,11 +10,11 @@ int line_start_x, line_start_y;
 int line_end_x, line_end_y;
 bool bits[3][4] = {0};
 
-void calculateBinary(int x, int y, int p);
+void calculateBinary(int x, int y, int p); //Calculate the binary string
 void myInit(void);
 void myDisplay(void);
-void theRect();
-void theLine();
+void theRect(); //Draws the racgangle from input
+void theLine(); //Draws the line using DDA Algorithm
 
 int main(int argc, char** argv){
     cout<<"Enter the minimum window Coordinate: ";
@@ -85,8 +85,8 @@ void theRect(){
 }
 
 void theLine(){
-    float dx, dy;
-    float x, y;
+    float dx, dy; //point increments
+    float x, y; //initial point
     float m;
 
     x = line_start_x;
@@ -95,10 +95,10 @@ void theLine(){
     m = (float)(line_end_y - line_start_y)/ (float)(line_end_x - line_start_x);
 
     for (int i = 0; x <= line_end_x ; i++) {
-        if(m<=1){
+        if(m<=1){ //if the line have a negative slop
             dx = 1;
             dy = m*dx;
-        }else{
+        }else{ //for positive slop
             dy = 1;
             dx = dy/m;
         }
@@ -106,22 +106,22 @@ void theLine(){
         x = x+dx;
         y = y+dy;
 
-        calculateBinary((int)x, (int)y, 2);
+        calculateBinary((int)x, (int)y, 2); //varify if current point is inside
 
         if(bits[2][0] || bits[2][1] || bits[2][2] || bits[2][3]){
-            glColor3f(1, 0, 0);
+            glColor3f(1, 0, 0); //red for outside
             glBegin(GL_POINTS);
             glVertex2d(x, y);
             glEnd();
         }else{
-            glColor3f(0, 1, 0);
+            glColor3f(0, 1, 0); //green for outside
             glBegin(GL_POINTS);
             glVertex2d(x, y);
             glEnd();
         }
         
         for (int j = 0; j < 4; j++) {
-            bits[2][j] = 0;
+            bits[2][j] = 0; //re initialize the binary string
         }
 
     }
