@@ -10,7 +10,7 @@ int line_start_x, line_start_y;
 int line_end_x, line_end_y;
 bool bits[3][4] = {0};
 
-void calculateBinary(int x, int y, int p); //Calculate the binary string
+void calculateBinary(int x, int y, int p); //Calculate the binary string (top bottom left right)
 void myInit(void);
 void myDisplay(void);
 void theRect(); //Draws the racgangle from input
@@ -85,8 +85,8 @@ void theRect(){
 }
 
 void theLine(){
-    float dx, dy; //point increments
-    float x, y; //initial point
+    float dx, dy;   //point increments
+    float x, y;     //initial point
     float m;
 
     x = line_start_x;
