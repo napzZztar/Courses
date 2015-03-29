@@ -15,7 +15,6 @@ void myInit(void);
 void myDisplay(void);
 void theRect();
 void theLine();
-void clip();
 
 int main(int argc, char** argv){
     cout<<"Enter the minimum window Coordinate: ";
@@ -27,6 +26,8 @@ int main(int argc, char** argv){
     cout<<"Enter the second coordinate of the line: ";
     cin>>line_end_x>>line_end_y;
 
+
+
     // window_min_x = 200;
     // window_min_y = 250;
     // window_max_x = 300;
@@ -36,12 +37,13 @@ int main(int argc, char** argv){
     // line_start_y = 200;
     // line_end_x = 300;
     // line_end_y = 350;
-    
-    cout<<"Starting point: ";
-    calculateBinary(line_start_x, line_start_y, 0);
 
-    cout<<"End point: ";
+    calculateBinary(line_start_x, line_start_y, 0);
+    cout<<"Starting point: "<<bits[0][0]<<bits[0][1]<<bits[0][2]<<bits[0][3]<<endl;
+
     calculateBinary(line_end_x, line_end_y, 1);
+    cout<<"End point: ";
+    cout<<"Starting point: "<<bits[1][0]<<bits[1][1]<<bits[1][2]<<bits[1][3]<<endl;
 
     glutInit(&argc, argv);                       
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); 
@@ -91,8 +93,6 @@ void theLine(){
     y = line_start_y;
 
     m = (float)(line_end_y - line_start_y)/ (float)(line_end_x - line_start_x);
-    cout<<m<<endl<<endl;
-
 
     for (int i = 0; x <= line_end_x ; i++) {
         if(m<=1){
@@ -106,7 +106,6 @@ void theLine(){
         x = x+dx;
         y = y+dy;
 
-        cout<<(int)x<<" - "<<(int)y<<" -> ";
         calculateBinary((int)x, (int)y, 2);
 
         if(bits[2][0] || bits[2][1] || bits[2][2] || bits[2][3]){
@@ -143,10 +142,5 @@ void calculateBinary(int x, int y, int p){
     if(x<window_min_x)
         bits[p][3] = 1;
 
-    for (int i = 0; i < 4; i++) {
-        cout<<bits[p][i];
-    }
-
-    cout<<endl;
 }
 
