@@ -18,27 +18,25 @@ void theLine();
 void clip();
 
 int main(int argc, char** argv){
-    // cout<<"Enter the minimum window Coordinate: ";
-    // cin>>window_min_x>>window_min_y;
-    // cout<<"Enter the maximum window Coordinate: ";
-    // cin>>window_max_x>>window_max_y;
-    // cout<<"Enter the first coordinate of the line: ";
-    // cin>>line_start_x>>line_start_y;
-    // cout<<"Enter the second coordinate of the line: ";
-    // cin>>line_end_x>>line_end_y;
+    cout<<"Enter the minimum window Coordinate: ";
+    cin>>window_min_x>>window_min_y;
+    cout<<"Enter the maximum window Coordinate: ";
+    cin>>window_max_x>>window_max_y;
+    cout<<"Enter the first coordinate of the line: ";
+    cin>>line_start_x>>line_start_y;
+    cout<<"Enter the second coordinate of the line: ";
+    cin>>line_end_x>>line_end_y;
+
+    // window_min_x = 200;
+    // window_min_y = 250;
+    // window_max_x = 300;
+    // window_max_y = 350;
     //
-
-
-    window_min_x = 200;
-    window_min_y = 250;
-    window_max_x = 300;
-    window_max_y = 350;
-
-    line_start_x = 100;
-    line_start_y = 200;
-    line_end_x = 300;
-    line_end_y = 350;
-
+    // line_start_x = 100;
+    // line_start_y = 200;
+    // line_end_x = 300;
+    // line_end_y = 350;
+    
     cout<<"Starting point: ";
     calculateBinary(line_start_x, line_start_y, 0);
 
