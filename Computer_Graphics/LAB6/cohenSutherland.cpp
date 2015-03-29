@@ -8,7 +8,7 @@ int window_min_x, window_min_y;
 int window_max_x, window_max_y;
 int line_start_x, line_start_y;
 int line_end_x, line_end_y;
-bool bits[2][4] = {0};
+bool bits[3][4] = {0};
 
 void calculateBinary(int x, int y, int p);
 void myInit(void);
@@ -18,14 +18,26 @@ void theLine();
 void clip();
 
 int main(int argc, char** argv){
-    cout<<"Enter the minimum window Coordinate: ";
-    cin>>window_min_x>>window_min_y;
-    cout<<"Enter the maximum window Coordinate: ";
-    cin>>window_max_x>>window_max_y;
-    cout<<"Enter the first coordinate of the line: ";
-    cin>>line_start_x>>line_start_y;
-    cout<<"Enter the second coordinate of the line: ";
-    cin>>line_end_x>>line_end_y;
+    // cout<<"Enter the minimum window Coordinate: ";
+    // cin>>window_min_x>>window_min_y;
+    // cout<<"Enter the maximum window Coordinate: ";
+    // cin>>window_max_x>>window_max_y;
+    // cout<<"Enter the first coordinate of the line: ";
+    // cin>>line_start_x>>line_start_y;
+    // cout<<"Enter the second coordinate of the line: ";
+    // cin>>line_end_x>>line_end_y;
+    //
+
+
+    window_min_x = 200;
+    window_min_y = 250;
+    window_max_x = 300;
+    window_max_y = 350;
+
+    line_start_x = 100;
+    line_start_y = 200;
+    line_end_x = 300;
+    line_end_y = 350;
 
     cout<<"Starting point: ";
     calculateBinary(line_start_x, line_start_y, 0);
@@ -73,10 +85,50 @@ void theRect(){
 }
 
 void theLine(){
-    glBegin(GL_LINE_LOOP);
-    glVertex2d(line_start_x, line_start_y);
-    glVertex2d(line_end_x, line_end_y);
-    glEnd();
+    float dx, dy;
+    float x, y;
+    float m;
+
+    x = line_start_x;
+    y = line_start_y;
+
+    m = (float)(line_end_y - line_start_y)/ (float)(line_end_x - line_start_x);
+    cout<<m<<endl<<endl;
+
+
+    for (int i = 0; x <= line_end_x ; i++) {
+        if(m<=1){
+            dx = 1;
+            dy = m*dx;
+        }else{
+            dy = 1;
+            dx = dy/m;
+        }
+
+        x = x+dx;
+        y = y+dy;
+
+        cout<<(int)x<<" - "<<(int)y<<" -> ";
+        calculateBinary((int)x, (int)y, 2);
+
+        if(bits[2][0] || bits[2][1] || bits[2][2] || bits[2][3]){
+            glColor3f(1, 0, 0);
+            glBegin(GL_POINTS);
+            glVertex2d(x, y);
+            glEnd();
+        }else{
+            glColor3f(0, 1, 0);
+            glBegin(GL_POINTS);
+            glVertex2d(x, y);
+            glEnd();
+        }
+        
+        for (int j = 0; j < 4; j++) {
+            bits[2][j] = 0;
+        }
+
+    }
+
 }
 
 
@@ -100,7 +152,3 @@ void calculateBinary(int x, int y, int p){
     cout<<endl;
 }
 
-
-void clip(){
-
-}
