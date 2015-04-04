@@ -14,11 +14,11 @@ void init();
 bool backTrack();
 
 int main(){
+    init();
     cout<<"Input the number of colors: ";
     cin>>m;
     m++;
 
-    init();
     if(backTrack()){
         cout<<"\t";
         for (int i = 1; i < V; i++)
@@ -40,36 +40,46 @@ int main(){
 }
 
 void init(){
-    graph[1][4] = 1;
-    graph[4][1] = 1;
-    graph[1][2] = 1;
-    graph[2][1] = 1;
-    graph[1][3] = 1;
-    graph[3][1] = 1;
-    graph[2][5] = 1;
-    graph[5][2] = 1;
-    graph[2][9] = 1;
-    graph[9][2] = 1;
-    graph[9][7] = 1;
-    graph[7][9] = 1;
-    graph[7][6] = 1;
-    graph[6][7] = 1;
-    graph[5][8] = 1;
-    graph[8][5] = 1;
-    graph[3][8] = 1;
-    graph[8][3] = 1;
-    graph[3][7] = 1;
-    graph[7][3] = 1;
-    graph[5][6] = 1;
-    graph[6][5] = 1;
-    graph[4][6] = 1;
-    graph[6][4] = 1;
-    graph[9][10] = 1;
-    graph[10][9] = 1;
-    graph[8][10] = 1;
-    graph[10][8] = 1;
-    graph[4][10] = 1;
-    graph[10][4] = 1;
+    int edge;
+    int s, d;
+    cout<<"Please enter the number of edges: ";
+    cin>>edge;
+    cout<<endl<<"Enter the edges(s-d) follwed by enter: ";
+
+    for (int i = 0; i < edge; i++) {
+        cin>>s>>d;
+    }
+
+    // graph[1][4] = 1;
+    // graph[4][1] = 1;
+    // graph[1][2] = 1;
+    // graph[2][1] = 1;
+    // graph[1][3] = 1;
+    // graph[3][1] = 1;
+    // graph[2][5] = 1;
+    // graph[5][2] = 1;
+    // graph[2][9] = 1;
+    // graph[9][2] = 1;
+    // graph[9][7] = 1;
+    // graph[7][9] = 1;
+    // graph[7][6] = 1;
+    // graph[6][7] = 1;
+    // graph[5][8] = 1;
+    // graph[8][5] = 1;
+    // graph[3][8] = 1;
+    // graph[8][3] = 1;
+    // graph[3][7] = 1;
+    // graph[7][3] = 1;
+    // graph[5][6] = 1;
+    // graph[6][5] = 1;
+    // graph[4][6] = 1;
+    // graph[6][4] = 1;
+    // graph[9][10] = 1;
+    // graph[10][9] = 1;
+    // graph[8][10] = 1;
+    // graph[10][8] = 1;
+    // graph[4][10] = 1;
+    // graph[10][4] = 1;
 }
 
 bool backTrack(){
