@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#define arS 10
+#define arS 20
 
 using namespace std;
 
@@ -13,7 +13,7 @@ string colorName[6] = {" ", "Red", "Gre", "Blue", "Yellow", "Black"};
 
 void init();
 bool backTrack();
-void pint();
+void print();
 
 int main(){
     init();
@@ -22,6 +22,7 @@ int main(){
     m++;
 
     if(backTrack()){
+        print();
     }else{
         cout<<"Coloring not possible";
     }
@@ -40,6 +41,8 @@ void init(){
 
     for (int i = 0; i < edge; i++) {
         cin>>s>>d;
+        graph[s][d] = 1;
+        graph[d][s] = 1;
     }
 
     // graph[1][4] = 1;
