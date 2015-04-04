@@ -1,13 +1,14 @@
 #include <iostream>
 #include <vector>
 
+#define arS 10
 
 using namespace std;
 
 int m;
 int V;
-bool graph[V][V] = {0};
-int color[V] = {0};
+bool graph[arS][arS] = {0};
+int color[arS] = {0};
 string colorName[6] = {" ", "Red", "Gre", "Blue", "Yellow", "Black"};
 
 void init();
