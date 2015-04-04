@@ -1,17 +1,18 @@
 #include <iostream>
 #include <vector>
 
-#define V 11
 
 using namespace std;
 
 int m;
+int V;
 bool graph[V][V] = {0};
 int color[V] = {0};
 string colorName[6] = {" ", "Red", "Gre", "Blue", "Yellow", "Black"};
- 
+
 void init();
 bool backTrack();
+void pint();
 
 int main(){
     init();
@@ -20,22 +21,10 @@ int main(){
     m++;
 
     if(backTrack()){
-        cout<<"\t";
-        for (int i = 1; i < V; i++)
-            cout<<i<<"("<<colorName[color[i]]<<")\t";
-        cout<<endl;
-            
-        for (int i = 1; i < V; i++) {
-            cout<<i<<"("<<colorName[color[i]]<<")\t";
-            for (int j = 1; j < V; j++) {
-                cout<<graph[i][j]<<"\t";
-            }
-            cout<<endl<<endl;
-        }
     }else{
         cout<<"Coloring not possible";
     }
-    
+
     return 0;
 }
 
@@ -44,6 +33,8 @@ void init(){
     int s, d;
     cout<<"Please enter the number of edges: ";
     cin>>edge;
+    cout<<"Please enter the number of Vertex: ";
+    cin>>V;
     cout<<endl<<"Enter the edges(s-d) follwed by enter: ";
 
     for (int i = 0; i < edge; i++) {
@@ -110,4 +101,20 @@ bool backTrack(){
     }
 
     return true;
+}
+
+void print(){
+
+    cout<<"\t";
+    for (int i = 1; i < V; i++)
+        cout<<i<<"("<<colorName[color[i]]<<")\t";
+    cout<<endl;
+
+    for (int i = 1; i < V; i++) {
+        cout<<i<<"("<<colorName[color[i]]<<")\t";
+        for (int j = 1; j < V; j++) {
+            cout<<graph[i][j]<<"\t";
+        }
+        cout<<endl<<endl;
+    }
 }
