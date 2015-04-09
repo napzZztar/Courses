@@ -1,3 +1,15 @@
+//***************************************************
+//** solve:                                        **
+//**     for each row                              **
+//**         if [placeQueen = 9]                   **
+//**             back to last queen and palce 2    **
+//** palceQueen:                                   **
+//**     if [board value is not 2]                 **
+//**         if[placeable]                         **
+//**             change board value to 1           **
+//***************************************************
+
+
 #include <iostream>
 #include <GL/glut.h>
 #include <math.h>
