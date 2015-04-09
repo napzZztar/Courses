@@ -55,10 +55,8 @@ void solve(){
                 }
             }
 
-            for (int j = row+1; j < N; j++) {
-                for (int k = 0; k < N; k++) {
-                    board[j][k] = 0;
-                }
+            for (int k = 0; k < N; k++) {
+                board[row+1][k] = 0;
             }
             row--;
         }
@@ -114,7 +112,7 @@ void DrawSquare(int x, int y){
     x *= w;
     y *= w;
     glBegin(GL_QUADS);
-    
+
     glVertex2i(x, y);
     glVertex2i(x, y+w);
     glVertex2i(x+w, y+w);
@@ -147,7 +145,7 @@ void myInit(){
     glClearColor(1.0, 1.0, 1.0, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0, 795, 0, 795);
+    gluOrtho2D(0, 799, 0, 799);
 }
 
 void drawCircle(int x, int y){
