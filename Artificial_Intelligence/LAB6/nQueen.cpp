@@ -11,8 +11,8 @@
 
 
 #include <iostream>
-#include <GL/glut.h>
-#include <math.h>
+#include <GL/glut.h> //for windows use gl/glut.h instade of GL/glut.h
+#include <math.h>    //will be needed while drawing circles
 
 #define aSz 20
 

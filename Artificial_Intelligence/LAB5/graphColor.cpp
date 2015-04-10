@@ -79,7 +79,7 @@ void init(){ //assigns the value of the graph
 
 bool backTrack(){
     int j;
-    bool possible[V][m];
+    bool possible[V][m]; //not supported by older version of C++
 
     for (int i = 1; i < V; i++)
         for (int j = 1; j < m; j++)
