@@ -56,18 +56,18 @@ int main(int argc, char **argv){
 void solve(){
     int temp;
     for (int row = 0; row < N; row++) {
-        temp = placeQueen(row);
+        temp = placeQueen(row); //as every row will contain a queen 
 
-        if (temp == (N+1)) {
-            row--;
+        if (temp == (N+1)) { //if placing a queen is not possible in this row
+            row--; //bakcing up a bit
             for (int i = N; i >= 0; i--) {
-                if(board[row][i] == 1){
-                    board[row][i] = 2;
+                if(board[row][i] == 1){ 
+                    board[row][i] = 2; //placing a queen here won't work
                     break;
                 }
             }
 
-            for (int k = 0; k < N; k++) {
+            for (int k = 0; k < N; k++) { //clean up the old mess
                 board[row+1][k] = 0;
             }
             row--;
@@ -80,16 +80,16 @@ int placeQueen(int row){
     int col;
 
     for (col = 0; col < N; col++) {
-        possible = true;
-        if(board[row][col] != 2){
+        possible = true; //let placing a queen here is possible
+        if(board[row][col] != 2){ //well, you already tried this combination
             for (int j = 0; j < N; j++) {
-                if ((board[row][j]==1) || (board[j][col]==1)){
+                if ((board[row][j]==1) || (board[j][col]==1)){ //there are queen in this row and column
                     possible = false;
                     break;
                 }
 
                 for (int k = 0; k < N; k++) {
-                    if(((j+k) == (row+col)) || (j-k) == (row - col)){
+                    if(((j+k) == (row+col)) || (j-k) == (row - col)){ //diagonal check
                         if(board[j][k] == 1){
                             possible = false;
                             break;
@@ -98,7 +98,7 @@ int placeQueen(int row){
                 }
             }
 
-            if(possible){
+            if(possible){ // no threat 
                 board[row][col] = 1;
                 return col;
             }
