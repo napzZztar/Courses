@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<catalog>
+
+<categories>
+	<category name="Pizzas" catno="1">
+	
+		<item name="Tomato & Cheese" value="1">
+			<prize size="small" >5.50</prize>
+			<prize size="large" >9.75</prize>
+		</item>
+		<item name="Onions" value="2">
+			<prize size="small" >6.85</prize>
+			<prize size="large" >10.85</prize>
+		</item>
+		<item name="Peppers" value="3">
+			<prize size="small" >6.85</prize>
+			<prize size="large" >10.85</prize>
+		</item>
+	</category>
+	
+	<category name="Speciality Pizzas" catno="2">
+		<item name="Three Aces Special" value="1">
+			<prize size="small" >9.80</prize>
+			<prize size="large" >15.80</prize>
+		</item>
+		<item name="Mediterranean Sliced Tomatoes, Olives, Spinach, Fresh Gallic, Mozzarella & Feta Cheese" value="2">
+			<prize size="small" >9.80</prize>
+			<prize size="large" >15.80</prize>
+		</item>
+		<item name="Meat Lovers Pepperoni, Hamburg, Sausage & Bacon" value="3">
+			<prize size="small" >9.80</prize>
+			<prize size="large" >15.80</prize>
+		</item>
+	</category>
+	
+	<category name="Special Dinners" catno="3">
+	
+		<item name="Chicken Wing Dinner" value="1">
+			<prize size="small" >5.50</prize>
+			<prize size="large" >9.75</prize>
+		</item>
+		<item name="Onions" value="2">
+			<prize size="small" >6.85</prize>
+			<prize size="large" >10.85</prize>
+		</item>
+		<item name="Peppers" value="3">
+			<prize size="default">6.85</prize>
+		</item>
+	</category>
+</catalories>
+
+<catalog>
