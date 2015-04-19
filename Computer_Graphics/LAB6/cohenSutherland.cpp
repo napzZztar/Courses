@@ -114,7 +114,7 @@ void theLine(){
             glVertex2d(x, y);
             glEnd();
         }else{
-            glColor3f(0, 1, 0); //green for outside
+            glColor3f(0, 1, 0); //green for inside
             glBegin(GL_POINTS);
             glVertex2d(x, y);
             glEnd();
