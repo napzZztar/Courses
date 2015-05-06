@@ -1,7 +1,7 @@
 #include <iostream>
 #include <GL/glut.h>
 using namespace std;
- 
+
 
 int st_x;
 int st_y;
@@ -10,7 +10,7 @@ int ed_y;
 
 void myInit(void);
 void myDisplay(void);
-void dda();
+void theLine();
 
 int main(int argc, char** argv){
     cout<<"Enter the starting coordinate";
@@ -34,9 +34,7 @@ void myDisplay(void){
     glClear(GL_COLOR_BUFFER_BIT);                
     glColor3f(0.0, 0.0, 0.0);                    
     glPointSize(4.0);                            
-    glBegin(GL_POINTS);                          
-    dda();
-    glEnd();                                     
+    theLine();
     glFlush();                                   
 }
 
@@ -49,19 +47,30 @@ void myInit(void){
     gluOrtho2D(0.0, 640.0, 0.0, 480.0);          
 }
 
-void dda(){
+void theLine(){
+    float dx, dy;   //point increments
+    float x, y;     //initial point
     float m;
-    int x = st_x;
-    int y = st_y;
 
-    m = (ed_y - st_y)/(ed_x - st_x);
-    
-    {
-        y += m;
-        x += 1/m;
+    x = st_x;
+    y = st_y;
+
+    m = (float)(ed_y - st_y)/ (float)(ed_x - st_x);
+
+    glBegin(GL_POINTS);
+    for (int i = 0; x <= ed_x ; i++) {
+        if(m>1){ //if the line have a negative slop
+            dx = 1;
+            dy = m*dx;
+        }else{ //for positive slop
+            dy = 1;
+            dx = dy/m;
+        }
+
+        x = x+dx;
+        y = y+dy;
+
         glVertex2d(x, y);
-        
-        if(x == ed_x && y == ed_y)
-            break;
     }
+    glEnd();
 }
