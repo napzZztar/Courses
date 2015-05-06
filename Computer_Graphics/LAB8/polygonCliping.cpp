@@ -4,29 +4,21 @@
 using namespace std;
 
 
+int nPoints;
 int window_min_x, window_min_y;
 int window_max_x, window_max_y;
-int line_start_x, line_start_y;
-int line_end_x, line_end_y;
 bool bits[3][4] = {0};
+float coords[10][10];
 
 void calculateBinary(int x, int y, int p); //Calculate the binary string (top bottom left right)
 void myInit(void);
 void myDisplay(void);
 void theRect(); //Draws the racgangle from input
-void theLine(); //Draws the line using DDA Algorithm
+void theLine(float line_start_x, float line_start_y, float line_end_x, float line_end_y); //Draws the line using DDA Algorithm
+void input();
 
 int main(int argc, char** argv){
-    cout<<"Enter the minimum window Coordinate: ";
-    cin>>window_min_x>>window_min_y;
-    cout<<"Enter the maximum window Coordinate: ";
-    cin>>window_max_x>>window_max_y;
-    cout<<"Enter the first coordinate of the line: ";
-    cin>>line_start_x>>line_start_y;
-    cout<<"Enter the second coordinate of the line: ";
-    cin>>line_end_x>>line_end_y;
-
-
+    input();
 
     // window_min_x = 200;
     // window_min_y = 250;
@@ -37,13 +29,6 @@ int main(int argc, char** argv){
     // line_start_y = 200;
     // line_end_x = 300;
     // line_end_y = 350;
-
-    calculateBinary(line_start_x, line_start_y, 0);
-    cout<<"Starting point: "<<bits[0][0]<<bits[0][1]<<bits[0][2]<<bits[0][3]<<endl;
-
-    calculateBinary(line_end_x, line_end_y, 1);
-    cout<<"End point: ";
-    cout<<"Starting point: "<<bits[1][0]<<bits[1][1]<<bits[1][2]<<bits[1][3]<<endl;
 
     glutInit(&argc, argv);                       
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); 
@@ -60,7 +45,7 @@ int main(int argc, char** argv){
 void myInit(void){
     glClearColor(1.0, 1.0, 1.0, 0.0);            
     glColor3f(0.0f, 0.0f, 0.0f);                 
-    glPointSize(4.0);                            
+    glPointSize(2.0);                            
     glMatrixMode(GL_PROJECTION);                 
     glLoadIdentity();                            
     gluOrtho2D(0.0, 640.0, 0.0, 480.0);          
@@ -71,7 +56,12 @@ void myDisplay(void){
     glColor3f(0.0, 0.0, 0.0);                    
     glPointSize(4.0);                            
     theRect();
-    theLine();
+
+    for (int i = 0; i < nPoints; i++) {
+        theLine(coords[i][0], coords[i][1], coords[i+1][0], coords[i+1][1]);
+    }
+    theLine(coords[0][0], coords[0][1], coords[nPoints-1][0], coords[nPoints-1][1]);
+
     glFlush();                                   
 }
 
@@ -84,7 +74,9 @@ void theRect(){
     glEnd();
 }
 
-void theLine(){
+void theLine(float line_start_x, float line_start_y, float line_end_x, float line_end_y){
+    cout<<line_start_x<<" , "<<line_start_y<<" - "<<line_end_x<<" , "<<line_end_y<<endl;
+
     float dx, dy;   //point increments
     float x, y;     //initial point
     float m;
@@ -95,7 +87,7 @@ void theLine(){
     m = (float)(line_end_y - line_start_y)/ (float)(line_end_x - line_start_x);
 
     for (int i = 0; x <= line_end_x ; i++) {
-        if(m<=1){ //if the line have a negative slop
+        if(m<1){ //if the line have a negative slop
             dx = 1;
             dy = m*dx;
         }else{ //for positive slop
@@ -128,7 +120,6 @@ void theLine(){
 
 }
 
-
 void calculateBinary(int x, int y, int p){
     if(y>window_max_y)
         bits[p][0] = 1;
@@ -144,3 +135,17 @@ void calculateBinary(int x, int y, int p){
 
 }
 
+void input(){
+    cout<<"Enter the minimum window Coordinate: ";
+    cin>>window_min_x>>window_min_y;
+    cout<<"Enter the maximum window Coordinate: ";
+    cin>>window_max_x>>window_max_y;
+
+    cout<<endl<<"Enter the number of points : ";
+    cin>>nPoints;
+
+    cout<<endl<<"Enter the coordinates followed by Enter : "<<endl;
+    for (int i = 0; i < nPoints; i++) {
+        cin>>coords[i][0]>>coords[i][1];
+    }
+}
