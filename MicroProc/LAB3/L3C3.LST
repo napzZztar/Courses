@@ -1,0 +1,56 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/1/15 23:22:39
+
+                                                             Page     1-1
+
+
+       1 = 3FD8				DAC EQU 3FD8H
+       2				
+       3 0000				CODE SEGMENT
+       4				    
+       5				    ASSUME CS: CODE, DS: CODE
+       6				    
+       7 0000  32 C0			    XOR AL, AL
+       8 0002  BA 3FD8			    MOV DX, DAC
+       9				    
+      10 0005				    L1:
+      11 0005  EE			    OUT DX, AL
+      12 0006  B9 0064			    MOV CX, 100
+      13 0009  E2 FE			    LOOP $
+      14 000B  F6 D0			    NOT AL
+      15 000D  EB F6			    JMP L1
+      16				    
+      17 000F  F4			    HLT
+      18 0010				    CODE ENDS
+      19				END
+Microsoft (R) Macro Assembler Version 5.10                  6/1/15 23:22:39
+
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0010	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+DAC  . . . . . . . . . . . . . .  	NUMBER	3FD8	
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	0005	CODE
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  L3C3		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     19 Source  Lines
+     19 Total   Lines
+      8 Symbols
+
+  46694 + 447542 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

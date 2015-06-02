@@ -1,0 +1,63 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/1/15 23:22:30
+
+                                                             Page     1-1
+
+
+       1 = 3FD8				DAC EQU 3FD8H
+       2				
+       3 0000				CODE SEGMENT
+       4				    
+       5				    ASSUME CS: CODE, DS: CODE
+       6				    
+       7 0000  BA 3FD8			    MOV DX, DAC
+       8 0003  32 C0			    XOR AL, AL
+       9 0005				    L1:
+      10 0005  EE			    OUT DX, AL
+      11 0006  FE C0			    INC AL
+      12 0008  3C FF			    CMP AL, 0FFH
+      13 000A  75 F9			    JNZ L1
+      14				    
+      15 000C				    L2:
+      16 000C  EE			    OUT DX, AL
+      17 000D  FE C8			    DEC AL
+      18 000F  22 C0			    AND AL, AL
+      19 0011  75 F9			    JNZ L2
+      20 0013  EB F0			    JMP L1
+      21				    
+      22				    
+      23 0015  F4			    HLT
+      24 0016				    CODE ENDS
+      25				END
+Microsoft (R) Macro Assembler Version 5.10                  6/1/15 23:22:30
+
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0016	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+DAC  . . . . . . . . . . . . . .  	NUMBER	3FD8	
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	0005	CODE
+L2 . . . . . . . . . . . . . . .  	L NEAR	000C	CODE
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  L3C2		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     25 Source  Lines
+     25 Total   Lines
+      9 Symbols
+
+  46694 + 447542 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
