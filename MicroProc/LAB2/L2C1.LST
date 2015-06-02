@@ -1,0 +1,44 @@
+Microsoft (R) Macro Assembler Version 5.10                  5/26/15 00:39:45
+                                                             Page     1-1
+
+
+       1 0000				SERIES SEGMENT
+       2				    ASSUME CS:SERIES, DS: SERIES
+       3 0000  33 DB			    XOR BX, BX
+       4 0002  B9 0009			    MOV CX, 9
+       5 0005				    START:
+       6 0005  03 D9			        ADD BX, CX
+       7 0007  E2 FC			    LOOP START
+       8				    
+       9 0009  F4			    HLT
+      10 000A				    SERIES ENDS
+      11				END
+Microsoft (R) Macro Assembler Version 5.10                  5/26/15 00:39:45
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+SERIES . . . . . . . . . . . . .  	000A	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+START  . . . . . . . . . . . . .  	L NEAR	0005	SERIES
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  L2C1		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     11 Source  Lines
+     11 Total   Lines
+      7 Symbols
+
+  46694 + 447542 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

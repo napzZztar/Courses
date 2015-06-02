@@ -1,0 +1,57 @@
+Microsoft (R) Macro Assembler Version 5.10                  5/26/15 00:41:14
+                                                             Page     1-1
+
+
+       1 0000				ARRAY SEGMENT
+       2				    ASSUME CS:ARRAY, DS: ARRAY
+       3				    
+       4 0000  33 C0			    XOR AX, AX
+       5 0002  8C C8			    MOV AX, CS
+       6 0004  8E D8			    MOV DS, AX
+       7 0006  B8 0000			    MOV AX, 0
+       8				    
+       9 0009  BE 0019 R		    MOV SI, OFFSET A
+      10 000C  B9 0003			    MOV CX, 3
+      11 000F  B3 03			    MOV BL, 3
+      12				    
+      13 0011				    L1:
+      14 0011  02 04			        ADD AL, [SI]
+      15 0013  46			        INC SI
+      16 0014  E2 FB			    LOOP L1
+      17 0016  F6 F3			    DIV BL
+      18 0018  F4			    HLT  
+      19				          
+      20 0019  03 01 02			    A DB 3,1,2
+      21 001C				    ARRAY ENDS
+      22				END
+Microsoft (R) Macro Assembler Version 5.10                  5/26/15 00:41:14
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+ARRAY  . . . . . . . . . . . . .  	001C	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+A  . . . . . . . . . . . . . . .  	L BYTE	0019	ARRAY
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	0011	ARRAY
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  L2C2		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     22 Source  Lines
+     22 Total   Lines
+      8 Symbols
+
+  46616 + 447620 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

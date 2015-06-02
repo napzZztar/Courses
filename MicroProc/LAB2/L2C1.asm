@@ -1,0 +1,11 @@
+SERIES SEGMENT
+    ASSUME CS:SERIES, DS: SERIES
+    XOR BX, BX
+    MOV CX, 9
+    START:
+        ADD BX, CX
+    LOOP START
+    
+    HLT
+    SERIES ENDS
+END
