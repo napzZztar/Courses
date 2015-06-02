@@ -1,0 +1,14 @@
+CODE SEGMENT
+    ASSUME CS:CODE, DS:CODE
+   	
+    MOV BX, 1234H
+    MOV CX, 5678H
+
+    SUB BX, CX
+    MOV AL, 1BH
+    MOV DH, 02H
+    SUB AL, DH
+
+    HLT
+    CODE ENDS
+END

@@ -1,0 +1,44 @@
+Microsoft (R) Macro Assembler Version 5.10                  5/19/15 01:21:46
+                                                             Page     1-1
+
+
+       1 0000				CODE SEGMENT
+       2				    ASSUME CS:CODE, DS:CODE
+       3				    
+       4 0000  B8 1234			    MOV AX, 1234H
+       5 0003  BB 5678			    MOV BX, 5678H
+       6				    
+       7 0006  8B C8			    MOV CX, AX
+       8 0008  8B C3			    MOV AX, BX
+       9 000A  8B D9			    MOV BX, CX
+      10				    
+      11 000C  F4			    HLT
+      12 000D				    CODE ENDS
+      13				END
+Microsoft (R) Macro Assembler Version 5.10                  5/19/15 01:21:46
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	000D	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  L1C1		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     13 Source  Lines
+     13 Total   Lines
+      6 Symbols
+
+  46694 + 447542 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
