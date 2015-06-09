@@ -1,0 +1,54 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/8/15 23:39:01
+
+                                                             Page     1-1
+
+
+       1 = 3FD6				CNT3 EQU 3FD6H
+       2 = 3FD2				BPORT3 EQU 3FD2H
+       3				
+       4 0000				CODE SEGMENT
+       5				ASSUME CS:CODE,DS:CODE
+       6 0000  B0 80			    MOV AL,10000000B
+       7 0002  BA 3FD6			    MOV DX,CNT3
+       8 0005  EE			    OUT DX,AL 
+       9				    
+      10 0006  B0 95			    MOV AL,95h
+      11 0008  BA 3FD2			    MOV DX,BPORT3
+      12 000B  EE			    OUT DX,AL 
+      13				    
+      14				    
+      15 000C  F4			    HLT
+      16 000D				CODE ENDS
+      17				    END
+Microsoft (R) Macro Assembler Version 5.10                  6/8/15 23:39:01
+
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	000D	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+BPORT3 . . . . . . . . . . . . .  	NUMBER	3FD2	
+
+CNT3 . . . . . . . . . . . . . .  	NUMBER	3FD6	
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  l4c1		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     17 Source  Lines
+     17 Total   Lines
+      8 Symbols
+
+  46714 + 447570 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
