@@ -1,0 +1,76 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/9/15 00:02:05
+
+                                                             Page     1-1
+
+
+       1 0000				CODE SEGMENT
+       2				ASSUME CS: CODE, DS: CODE
+       3 = 3FF0				FND EQU 3FF0H
+       4 0000  8C C8			START: MOV AX, CS
+       5 0002  8E D8			MOV DS, AX
+       6 0004  BA 3FF0			MOV DX, FND
+       7 0007  B3 10			L1: MOV BL, 16
+       8 0009  BE 001C R		MOV SI, OFFSET FONT
+       9 000C  8A 04			L2: MOV AL, [SI]
+      10 000E  EE			OUT DX, AL
+      11 000F  B9 A000			MOV CX, 0A000H
+      12 0012  E2 FE			LOOP $
+      13 0014  46			INC SI
+      14 0015  FE CB			DEC BL
+      15 0017  75 F3			JNZ L2
+      16 0019  EB EC			JMP L1
+      17 001B  F4			HLT
+      18 001C  C0			FONT DB 11000000B
+      19 001D  F9			DB 11111001B
+      20 001E  A4			DB 10100100B
+      21 001F  B0			DB 10110000B
+      22 0020  99			DB 10011001B
+      23 0021  92			DB 10010010B
+      24 0022  82			DB 10000010B
+      25 0023  F8			DB 11111000B
+      26 0024  80			DB 10000000B
+      27 0025  90			DB 10010000B
+      28 0026  88			DB 10001000B
+      29 0027  83			DB 10000011B
+      30 0028  C6			DB 11000110B
+      31 0029  A1			DB 10100001B
+      32 002A  86			DB 10000110B
+      33 002B  8E			DB 10001110B
+      34 002C				CODE ENDS
+      35				END START
+Microsoft (R) Macro Assembler Version 5.10                  6/9/15 00:02:05
+
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	002C	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+FND  . . . . . . . . . . . . . .  	NUMBER	3FF0	
+FONT . . . . . . . . . . . . . .  	L BYTE	001C	CODE
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	0007	CODE
+L2 . . . . . . . . . . . . . . .  	L NEAR	000C	CODE
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  l4c5		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     35 Source  Lines
+     35 Total   Lines
+     11 Symbols
+
+  46598 + 447686 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

@@ -1,0 +1,58 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/8/15 23:53:06
+
+                                                             Page     1-1
+
+
+       1 = 3FD6				CNT3 EQU 3FD6H
+       2 = 3FD2				BPORT3 EQU 3FD2H
+       3 = 3FD0				APORT3 EQU 3FD0H
+       4 0000				CODE SEGMENT
+       5				ASSUME CS: CODE, DS: CODE
+       6 0000  B0 90			MOV AL, 90H
+       7 0002  BA 3FD6			MOV DX, CNT3
+       8 0005  EE			OUT DX, AL
+       9 0006  BA 3FD0			L1: MOV DX, APORT3
+      10 0009  EC			IN AL, DX
+      11 000A  F6 D0			NOT AL
+      12 000C  BA 3FD2			MOV DX, BPORT3
+      13 000F  EE			OUT DX, AL
+      14 0010  EB F4			JMP L1
+      15 0012  F4			HLT
+      16 0013				CODE ENDS
+      17				END
+Microsoft (R) Macro Assembler Version 5.10                  6/8/15 23:53:06
+
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0013	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+APORT3 . . . . . . . . . . . . .  	NUMBER	3FD0	
+
+BPORT3 . . . . . . . . . . . . .  	NUMBER	3FD2	
+
+CNT3 . . . . . . . . . . . . . .  	NUMBER	3FD6	
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	0006	CODE
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  l4c4		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     17 Source  Lines
+     17 Total   Lines
+     10 Symbols
+
+  46714 + 447570 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
