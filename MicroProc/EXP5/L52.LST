@@ -1,0 +1,69 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/29/15 23:10:53
+                                                             Page     1-1
+
+
+ 0000				CODE SEGMENT 
+				    ASSUME CS:CODE, DS: CODE, ES:CODE, SS:CODE
+				    
+ = 001F				    PPIC_C EQU 1FH
+ = 001D				    PPIC EQU 1DH
+ = 001B				    PPIB EQU 1BH
+ = 0019				    PPIA EQU 19H
+				    
+ 1000				    ORG 1000H
+ 1000  B8 0000			    MOV AX, 0
+				    
+ 1003  B0 80			    MOV AL, 10000000B
+ 1005  E6 1F			    OUT PPIC_C, AL
+				    
+ 1007  B9 0032			    MOV CX, 50
+ 100A  B0 EE			    MOV AL, 11101110B
+				    
+ 100C				    L1:
+ 100C  E6 1B			        OUT PPIB, AL
+ 100E  51			        PUSH CX
+ 100F  B9 0000			        MOV CX, 0
+ 1012  E2 FE			        LOOP $
+				        
+ 1014  59			        POP CX
+ 1015  D0 C8			        ROR AL, 1
+ 1017  E2 F3			        LOOP L1
+				        
+ 1019  F4			        HLT
+				    
+ 101A				    CODE ENDS
+				END
+Microsoft (R) Macro Assembler Version 5.10                  6/29/15 23:10:53
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	101A	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	100C	CODE
+
+PPIA . . . . . . . . . . . . . .  	NUMBER	0019	
+PPIB . . . . . . . . . . . . . .  	NUMBER	001B	
+PPIC . . . . . . . . . . . . . .  	NUMBER	001D	
+PPIC_C . . . . . . . . . . . . .  	NUMBER	001F	
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  L52		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     31 Source  Lines
+     31 Total   Lines
+     11 Symbols
+
+  47258 + 447026 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

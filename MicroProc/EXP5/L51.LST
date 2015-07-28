@@ -1,0 +1,110 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/29/15 22:54:45
+                                                             Page     1-1
+
+
+       1 0000				CODE SEGMENT
+       2				 ASSUME CS:CODE, DS:CODE, ES:CODE, SS:C
+					ODE
+       3				
+       4 = 001E				PPIC_C EQU 1EH ; Control Register
+       5 = 001C				PPIC EQU 1CH ; C port
+       6 = 001A				PPIB EQU 1AH
+       7 = 0018				PPIA EQU 18H
+       8				
+       9 1000				ORG 1000H
+      10 1000  B0 80			MOV AL, 10000000B ; All PORT initialize
+					d as Output
+      11 1002  E6 1E			OUT PPIC_C, AL ; Send control word to C
+					ontrol Register
+      12 1004  8C C8			MOV AX, CS ; Make code and data segment
+					 same
+      13 1006  8E D8			MOV DS, AX
+      14 1008  33 C0			XOR AX, AX ; Clear AX
+      15 100A  BE 1032 R		L1: MOV SI, OFFSET FONT ; Get the addre
+					ss of FONT
+      16 100D  B4 01			 MOV AH,00000001B
+      17				
+      18 100F  8A 04			L2: MOV AL, [SI] ; Load the FONT sequen
+					cially
+      19 1011  E6 1A			 OUT PPIB, AL ; Send to PORTB
+      20				
+      21 1013  8A C4			MOV AL, AH
+      22 1015  E6 1C			 OUT PPIC, AL ; send 0x01 to PORTC
+      23 1017  B0 FF			 MOV AL, 0FFH
+      24 1019  E6 18			 OUT PPIA, AL
+      25 101B  E8 1027 R		 CALL TIMER ; Create delay
+      26				
+      27 101E  46			INC SI ; Go for the next line
+      28 101F  F8			 CLC ; make Carry flag (CF) = 0
+      29 1020  D0 C4			 ROL AH, 1 ; Activate next line
+      30 1022  73 EB			 JNC L2 ; Jump if no carry ? Jump until
+					 all the msg of FONT is shown
+      31 1024  EB E4			 JMP L1 ; Always Jump to the beginning 
+					and keep displaying
+      32 1026  CC			 INT 3 ; Halt ?Never executed
+      33				
+      34 1027  B9 012C			TIMER: MOV CX, 300 ; This is a delay fu
+					nction
+      35 102A  90			TIMER1: NOP ; NOP (No Operation) does n
+					othing, but uses clock cycle.
+      36 102B  90			 NOP
+      37 102C  90			 NOP
+      38 102D  90			 NOP
+      39 102E  E2 FA			 LOOP TIMER1 ;
+      40 1030  C3			RET
+      41				
+      42 1031  F4			hlt
+      43 1032  FF			FONT DB 11111111B
+      44 1033  C0			 DB 11000000B
+Microsoft (R) Macro Assembler Version 5.10                  6/29/15 22:54:45
+                                                             Page     1-2
+
+
+      45 1034  B7			 DB 10110111B
+      46 1035  77			 DB 01110111B
+      47 1036  77			 DB 01110111B
+      48 1037  B7			 DB 10110111B
+      49 1038  C0			 DB 11000000B
+      50 1039  FF			 DB 11111111B
+      51 103A				CODE ENDS
+      52				 END 
+Microsoft (R) Macro Assembler Version 5.10                  6/29/15 22:54:45
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	103A	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+FONT . . . . . . . . . . . . . .  	L BYTE	1032	CODE
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	100A	CODE
+L2 . . . . . . . . . . . . . . .  	L NEAR	100F	CODE
+
+PPIA . . . . . . . . . . . . . .  	NUMBER	0018	
+PPIB . . . . . . . . . . . . . .  	NUMBER	001A	
+PPIC . . . . . . . . . . . . . .  	NUMBER	001C	
+PPIC_C . . . . . . . . . . . . .  	NUMBER	001E	
+
+TIMER  . . . . . . . . . . . . .  	L NEAR	1027	CODE
+TIMER1 . . . . . . . . . . . . .  	L NEAR	102A	CODE
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  L51		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     52 Source  Lines
+     52 Total   Lines
+     15 Symbols
+
+  46654 + 445582 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

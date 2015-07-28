@@ -1,0 +1,23 @@
+Microtec Research LOD186 Ver 4.0h        Jun-30-15  00:46
+ 
+   **LOADER COMMANDS
+ 
+ 
+  **LOAD MAP**
+ 
+ 
+ MODULE     <---------------------------------------------------- SEGMENT ----------------------------------------------------->
+            CODE:G-   
+ 
+ 
+ TSK.ASM     00000H   
+  //         010C5H   
+ 
+ 
+    STARTING CS= 0000H
+    STARTING IP= 0000H
+
+ 
+ 
+   **LOAD COMPLETED
+

@@ -1,0 +1,244 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:46:56
+                                                             Page     1-1
+
+
+ 0000				CODE SEGMENT
+				 ASSUME CS:CODE, DS:CODE, ES:CODE, SS:CODE
+				
+ = 001E				PPIC_C EQU 1EH ; Control Register
+ = 001C				PPIC EQU 1CH ; C port
+ = 001A				PPIB EQU 1AH
+ = 0018				PPIA EQU 18H
+				
+ 1000				ORG 1000H
+ 1000  B0 80			MOV AL, 10000000B ; All PORT initialized as Out
+				put
+ 1002  E6 1E			OUT PPIC_C, AL ; Send control word to Control R
+				egister
+ 1004  8C C8			MOV AX, CS ; Make code and data segment same
+ 1006  8E D8			MOV DS, AX
+ 1008  33 C0			XOR AX, AX ; Clear AX
+				
+ 100A				STT:
+				
+ 100A  B3 0A			MOV BL, 10
+				
+ 100C  BE 10A5 R		L1: MOV SI, OFFSET FONT ; Get the address of FO
+				NT
+ 100F  B4 01			 MOV AH,00000001B
+				
+ 1011  8A 04			L2: MOV AL, [SI] ; Load the FONT sequencially
+ 1013  E6 1A			 OUT PPIB, AL ; Send to PORTB
+				
+ 1015  8A C4			MOV AL, AH
+ 1017  E6 1C			 OUT PPIC, AL ; send 0x01 to PORTC
+ 1019  B0 FF			 MOV AL, 0FFH
+ 101B  E6 18			 OUT PPIA, AL
+ 101D  E8 109A R		 CALL TIMER ; Create delay
+				
+ 1020  46			INC SI ; Go for the next line
+ 1021  F8			 CLC ; make Carry flag (CF) = 0
+ 1022  D0 C4			 ROL AH, 1 ; Activate next line
+ 1024  73 EB			 JNC L2 ; Jump if no carry ? Jump until all the
+				 msg of FONT is shown
+ 1026  FE CB			 DEC BL
+ 1028  80 FB 00			 CMP BL, 0
+ 102B  75 DF			 JNE L1
+				
+				
+ 102D  B3 0A			MOV BL, 10
+ 102F  BE 10AD R		L3: MOV SI, OFFSET FONT1 ; Get the address of F
+				ONT
+ 1032  B4 01			 MOV AH,00000001B
+				
+ 1034  8A 04			L4: MOV AL, [SI] ; Load the FONT sequencially
+ 1036  E6 1A			 OUT PPIB, AL ; Send to PORTB
+				
+ 1038  8A C4			MOV AL, AH
+ 103A  E6 1C			 OUT PPIC, AL ; send 0x01 to PORTC
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:46:56
+                                                             Page     1-2
+
+
+ 103C  B0 FF			 MOV AL, 0FFH
+ 103E  E6 18			 OUT PPIA, AL
+ 1040  E8 109A R		 CALL TIMER ; Create delay
+				
+ 1043  46			INC SI ; Go for the next line
+ 1044  F8			 CLC ; make Carry flag (CF) = 0
+ 1045  D0 C4			 ROL AH, 1 ; Activate next line
+ 1047  73 EB			 JNC L4 ; Jump if no carry ? Jump until all the
+				 msg of FONT is shown
+ 1049  FE CB			 DEC BL
+ 104B  80 FB 00			 CMP BL, 0
+ 104E  75 DF			 JNE L3
+				
+				
+				
+ 1050  B3 0A			MOV BL, 10
+ 1052  BE 10B5 R		L5: MOV SI, OFFSET FONT2 ; Get the address of F
+				ONT
+ 1055  B4 01			 MOV AH,00000001B
+				
+ 1057  8A 04			L6: MOV AL, [SI] ; Load the FONT sequencially
+ 1059  E6 1A			 OUT PPIB, AL ; Send to PORTB
+				
+ 105B  8A C4			MOV AL, AH
+ 105D  E6 1C			 OUT PPIC, AL ; send 0x01 to PORTC
+ 105F  B0 FF			 MOV AL, 0FFH
+ 1061  E6 18			 OUT PPIA, AL
+ 1063  E8 109A R		 CALL TIMER ; Create delay
+				
+ 1066  46			INC SI ; Go for the next line
+ 1067  F8			 CLC ; make Carry flag (CF) = 0
+ 1068  D0 C4			 ROL AH, 1 ; Activate next line
+ 106A  73 EB			 JNC L6 ; Jump if no carry ? Jump until all the
+				 msg of FONT is shown
+ 106C  FE CB			 DEC BL
+ 106E  80 FB 00			 CMP BL, 0
+ 1071  75 DF			 JNE L5
+				
+				
+ 1073  B3 0A			MOV BL, 10
+ 1075  BE 10BD R		L7: MOV SI, OFFSET FONT3 ; Get the address of F
+				ONT
+ 1078  B4 01			 MOV AH,00000001B
+				
+ 107A  8A 04			L8: MOV AL, [SI] ; Load the FONT sequencially
+ 107C  E6 1A			 OUT PPIB, AL ; Send to PORTB
+				
+ 107E  8A C4			MOV AL, AH
+ 1080  E6 1C			 OUT PPIC, AL ; send 0x01 to PORTC
+ 1082  B0 FF			 MOV AL, 0FFH
+ 1084  E6 18			 OUT PPIA, AL
+ 1086  E8 109A R		 CALL TIMER ; Create delay
+				
+ 1089  46			INC SI ; Go for the next line
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:46:56
+                                                             Page     1-3
+
+
+ 108A  F8			 CLC ; make Carry flag (CF) = 0
+ 108B  D0 C4			 ROL AH, 1 ; Activate next line
+ 108D  73 EB			 JNC L8 ; Jump if no carry ? Jump until all the
+				 msg of FONT is shown
+ 108F  FE CB			 DEC BL
+ 1091  80 FB 00			 CMP BL, 0
+ 1094  75 DF			 JNE L7
+				
+				
+ 1096  E9 100A R		 JMP STT ; Always Jump to the beginning and kee
+				p displaying
+				
+				
+				
+ 1099  CC			 INT 3 ; Halt ?Never executed
+				
+ 109A  B9 012C			TIMER: MOV CX, 300 ; This is a delay function
+ 109D  90			TIMER1: NOP ; NOP (No Operation) does nothing, 
+				but uses clock cycle.
+ 109E  90			 NOP
+ 109F  90			 NOP
+ 10A0  90			 NOP
+ 10A1  E2 FA			 LOOP TIMER1 ;
+ 10A3  C3			RET
+				
+ 10A4  F4			hlt              
+				
+				
+ 10A5  FF			FONT DB 11111111B
+ 10A6  FB			     DB 11111011B
+ 10A7  F3			     DB 11110011B
+ 10A8  E0			     DB 11100000B
+ 10A9  F3			     DB 11110011B
+ 10AA  FB			     DB 11111011B
+ 10AB  FF			     DB 11111111B
+ 10AC  FF			     DB 11111111B
+				
+ 10AD  FF			FONT1 DB 11111111B
+ 10AE  F7			     DB 11110111B
+ 10AF  E7			     DB 11100111B
+ 10B0  C0			     DB 11000000B
+ 10B1  E7			     DB 11100111B
+ 10B2  F7			     DB 11110111B
+ 10B3  FF			     DB 11111111B
+ 10B4  FF			     DB 11111111B
+				
+				
+				
+ 10B5  FF			FONT2 DB 11111111B
+ 10B6  EF			     DB 11101111B
+ 10B7  CF			     DB 11001111B
+ 10B8  81			     DB 10000001B
+ 10B9  CF			     DB 11001111B
+ 10BA  EF			     DB 11101111B
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:46:56
+                                                             Page     1-4
+
+
+ 10BB  FF			     DB 11111111B
+ 10BC  FF			     DB 11111111B
+				
+ 10BD  FF			FONT3 DB 11111111B
+ 10BE  DF			      DB 11011111B
+ 10BF  9F			      DB 10011111B
+ 10C0  03			      DB 00000011B
+ 10C1  9F			      DB 10011111B
+ 10C2  DF			      DB 11011111B
+ 10C3  FF			      DB 11111111B
+ 10C4  FF			      DB 11111111B
+				
+				
+ 10C5				CODE ENDS
+				 END 
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:46:56
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	10C5	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+FONT . . . . . . . . . . . . . .  	L BYTE	10A5	CODE
+FONT1  . . . . . . . . . . . . .  	L BYTE	10AD	CODE
+FONT2  . . . . . . . . . . . . .  	L BYTE	10B5	CODE
+FONT3  . . . . . . . . . . . . .  	L BYTE	10BD	CODE
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	100C	CODE
+L2 . . . . . . . . . . . . . . .  	L NEAR	1011	CODE
+L3 . . . . . . . . . . . . . . .  	L NEAR	102F	CODE
+L4 . . . . . . . . . . . . . . .  	L NEAR	1034	CODE
+L5 . . . . . . . . . . . . . . .  	L NEAR	1052	CODE
+L6 . . . . . . . . . . . . . . .  	L NEAR	1057	CODE
+L7 . . . . . . . . . . . . . . .  	L NEAR	1075	CODE
+L8 . . . . . . . . . . . . . . .  	L NEAR	107A	CODE
+
+PPIA . . . . . . . . . . . . . .  	NUMBER	0018	
+PPIB . . . . . . . . . . . . . .  	NUMBER	001A	
+PPIC . . . . . . . . . . . . . .  	NUMBER	001C	
+PPIC_C . . . . . . . . . . . . .  	NUMBER	001E	
+
+STT  . . . . . . . . . . . . . .  	L NEAR	100A	CODE
+
+TIMER  . . . . . . . . . . . . .  	L NEAR	109A	CODE
+TIMER1 . . . . . . . . . . . . .  	L NEAR	109D	CODE
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  TSK		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+    165 Source  Lines
+    165 Total   Lines
+     25 Symbols
+
+  47182 + 440957 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

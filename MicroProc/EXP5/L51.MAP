@@ -1,0 +1,23 @@
+Microtec Research LOD186 Ver 4.0h        Jun-29-15  22:54
+ 
+   **LOADER COMMANDS
+ 
+ 
+  **LOAD MAP**
+ 
+ 
+ MODULE     <---------------------------------------------------- SEGMENT ----------------------------------------------------->
+            CODE:G-   
+ 
+ 
+ L51.ASM     00000H   
+  //         0103AH   
+ 
+ 
+    STARTING CS= 0000H
+    STARTING IP= 0000H
+
+ 
+ 
+   **LOAD COMPLETED
+

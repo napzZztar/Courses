@@ -1,0 +1,107 @@
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:05:06
+                                                             Page     1-1
+
+
+ 0000				CODE SEGMENT
+				 ASSUME CS:CODE, DS:CODE, ES:CODE, SS:CODE
+				
+ = 001E				PPIC_C EQU 1EH ; Control Register
+ = 001C				PPIC EQU 1CH ; C port
+ = 001A				PPIB EQU 1AH
+ = 0018				PPIA EQU 18H
+				
+ 1000				ORG 1000H
+ 1000  B0 80			MOV AL, 10000000B ; All PORT initialized as Out
+				put
+ 1002  E6 1E			OUT PPIC_C, AL ; Send control word to Control R
+				egister
+ 1004  8C C8			MOV AX, CS ; Make code and data segment same
+ 1006  8E D8			MOV DS, AX
+ 1008  33 C0			XOR AX, AX ; Clear AX
+ 100A  BE 1031 R		L1: MOV SI, OFFSET FONT ; Get the address of FO
+				NT
+ 100D  B4 01			 MOV AH,00000001B
+				
+ 100F  8A 04			L2: MOV AL, [SI] ; Load the FONT sequencially
+ 1011  E6 1A			 OUT PPIB, AL ; Send to PORTB
+				
+ 1013  8A C4			MOV AL, AH
+ 1015  E6 1C			 OUT PPIC, AL ; send 0x01 to PORTC
+ 1017  B0 FF			 MOV AL, 0FFH
+ 1019  E6 18			 OUT PPIA, AL
+ 101B  E8 1026 R		 CALL TIMER ; Create delay
+				
+ 101E  46			INC SI ; Go for the next line
+ 101F  F8			 CLC ; make Carry flag (CF) = 0
+ 1020  C4			 ROL AH, 3 ; Activate next line
+TSK.ASM(29): error A2052: Improper operand type
+ 1021  73 EC			 JNC L2 ; Jump if no carry ? Jump until all the
+				 msg of FONT is shown
+ 1023  EB E5			 JMP L1 ; Always Jump to the beginning and keep
+				 displaying
+ 1025  CC			 INT 3 ; Halt ?Never executed
+				
+ 1026  B9 012C			TIMER: MOV CX, 300 ; This is a delay function
+ 1029  90			TIMER1: NOP ; NOP (No Operation) does nothing, 
+				but uses clock cycle.
+ 102A  90			 NOP
+ 102B  90			 NOP
+ 102C  90			 NOP
+ 102D  E2 FA			 LOOP TIMER1 ;
+ 102F  C3			RET
+				
+ 1030  F4			hlt
+ 1031  FF			FONT DB 11111111B
+ 1032  FF			 DB 11111111B
+ 1033  EF			 DB 11101111B
+ 1034  CF			 DB 11001111B
+ 1035  81			 DB 10000001B
+ 1036  CF			 DB 11001111B
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:05:06
+                                                             Page     1-2
+
+
+ 1037  EF			 DB 11101111B
+ 1038  FF			 DB 11111111B
+ 1039				CODE ENDS
+				 END 
+Microsoft (R) Macro Assembler Version 5.10                  6/30/15 00:05:06
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	1039	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+FONT . . . . . . . . . . . . . .  	L BYTE	1031	CODE
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	100A	CODE
+L2 . . . . . . . . . . . . . . .  	L NEAR	100F	CODE
+
+PPIA . . . . . . . . . . . . . .  	NUMBER	0018	
+PPIB . . . . . . . . . . . . . .  	NUMBER	001A	
+PPIC . . . . . . . . . . . . . .  	NUMBER	001C	
+PPIC_C . . . . . . . . . . . . .  	NUMBER	001E	
+
+TIMER  . . . . . . . . . . . . .  	L NEAR	1026	CODE
+TIMER1 . . . . . . . . . . . . .  	L NEAR	1029	CODE
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  TSK		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     52 Source  Lines
+     52 Total   Lines
+     15 Symbols
+
+  47182 + 445054 Bytes symbol space free
+
+      0 Warning Errors
+      1 Severe  Errors

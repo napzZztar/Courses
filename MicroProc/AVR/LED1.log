@@ -1,0 +1,13 @@
+Line	MessageNo	File Name
+0	1	mikrocAVR.exe -MSF -DBG -pATMEGA32 -Y -DL -O11111114 -fo8 -N"D:\The-A-Team\AVR\LED1.mcpav" -SP"C:\Program Files\Mikroelektronika\mikroC PRO for AVR\defs\" -SP"C:\Program Files\Mikroelektronika\mikroC PRO for AVR\Uses\LTE64KW\" -SP"D:\The-A-Team\AVR\" "LED1.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_CString.mcl" "__Lib_CStdlib.mcl" "__Lib_CMath.mcl" "__Lib_Conversions.mcl" "__Lib_Sprintf.mcl" "__Lib_Sprinti.mcl" "__Lib_Sprintl.mcl" "__Lib_PrintOut.mcl" "__Lib_Time.mcl" "__Lib_Trigonometry.mcl" "__Lib_Button.mcl" "__Lib_Keypad4x4.mcl" "__Lib_Manchester.mcl" "__Lib_OneWire.mcl" "__Lib_PS2.mcl" "__Lib_Sound.mcl" "__Lib_SoftI2C.mcl" "__Lib_SoftSPI.mcl" "__Lib_SoftUART.mcl" "__Lib_ADC.mcl" "__Lib_EEPROM_eew.mcl" "__Lib_FLASH_rwe.mcl" "__Lib_PWM_0.mcl" "__Lib_PWM1_2.mcl" "__Lib_PWM16bit_12.mcl" "__Lib_SPI_b7654_x2.mcl" "__Lib_TWI.mcl" "__Lib_UART_d01_ursel.mcl" "__Lib_PortExpander.mcl" "__Lib_CANSPI.mcl" "__Lib_CF.mcl" "__Lib_CFFat16.mcl" "__Lib_GlcdFonts.mcl" "__Lib_Glcd.mcl" "__Lib_LcdConsts.mcl" "__Lib_Lcd.mcl" "__Lib_Mmc.mcl" "__Lib_MmcFat16.mcl" "__Lib_RS485.mcl" "__Lib_T6963C.mcl" "__Lib_SPIGlcd.mcl" "__Lib_SPILcd.mcl" "__Lib_SPILcd8.mcl" "__Lib_SPIT6963C.mcl" "__Lib_EthEnc28j60.mcl"	 
+diagnostics: 0	126	All files Preprocessed in 1 ms	 
+diagnostics: 0	122	Compilation Started	LED1.c
+diagnostics: 11	123	Compiled Successfully	LED1.c
+diagnostics: 0	127	All files Compiled in 15 ms	 
+hint: 0	1143	Used RX (bytes): 13 (41%)   Free RX (bytes): 19 (59%)	Used RX (bytes): 13 (41%)   Free RX (bytes): 19 (59%)
+hint: 0	1143	Static RAM (bytes): 0   Dynamic RAM (bytes): 2048	Static RAM (bytes): 0   Dynamic RAM (bytes): 2048
+hint: 0	1143	Used ROM (bytes): 154 (1%)  Free ROM (bytes): 28517 (99%)	Used ROM (bytes): 154 (1%)  Free ROM (bytes): 28517 (99%)
+diagnostics: 0	125	Project Linked Successfully	LED1.mcpav
+diagnostics: 0	128	Linked in 344 ms	 
+diagnostics: 0	129	Project 'LED1.mcpav' completed: 594 ms	 
+diagnostics: 0	103	Finished successfully: 11 Jul 2015, 23:25:50	LED1.mcpav
