@@ -58,6 +58,7 @@ class BankAccount{
 
 
 int main(){
+
     BankAccount *accounts;
     accounts = new BankAccount[5]{{"Name 1", 100.5},{"Name 2", 483}, {"Name 3", 894}, {"Name 4", 487}, {"Name 5", 874}};
 
