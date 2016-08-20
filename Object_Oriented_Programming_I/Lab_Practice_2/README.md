@@ -9,12 +9,13 @@ totalProfit			The profit from the sales, [totalProfit += (unitSellPrice- unitBuy
 
 
 Method Name					Functionality
-addProduct(quantity)		The productCounter will be increased by the value passed to it.
-doSales(quantitySold)		This method performs the sales operation. This method will 										decrease the product counter by quantity sold, calculate the 									payable amount of current sales and add the current sales amount 								to the total sales amount.
-setUnitBuyPrice(newPrice)	Sets the unit buy price of the product with the given value.
-setUnitSellPrice(newPrice)	Sets the unit sell price of the product with the given value.
-showBills()					Prints the details of the current Sales.
-showTotalSales()			Prints the amount of the total Sales.
-showTotalProfit()
+__________________________________
+* addProduct(quantity)		The productCounter will be increased by the value passed to it.
+* doSales(quantitySold)		This method performs the sales operation. This method will 										decrease the product * counter by quantity sold, calculate the 									payable amount of current sales and add the current sales amount 								to the total sales amount.
+* setUnitBuyPrice(newPrice)	Sets the unit buy price of the product with the given value.
+* setUnitSellPrice(newPrice)	Sets the unit sell price of the product with the given value.
+* showBills()					Prints the details of the current Sales.
+* showTotalSales()			Prints the amount of the total Sales.
+* showTotalProfit()
 
 The class contains a main method. Write necessary code to call the methods mentioned above.				
