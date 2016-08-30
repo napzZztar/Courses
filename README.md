@@ -1,3 +1,3 @@
 Courses
 =======
-This repo contains all the codes done in my academic Courses.
+This repository contains all the codes done in my academic Courses.
